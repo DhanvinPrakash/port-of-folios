@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prakash Dhanvin — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg: #faf9f7;
+  --surface: #ffffff;
+  --surface2: #f4f2ef;
+  --border: #e8e4de;
+  --border2: #d4cfc8;
+  --text: #1a1814;
+  --muted: #7a7470;
+  --accent: #c8503a;
+  --accent2: #e8956b;
+  --green: #3d7a5a;
+  --blue: #3a5fa0;
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("assets/noise.svg");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: center;
+  padding: 16px 24px;
+  background: rgba(250,249,247,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.nav-item {
+  font-size: 0.82rem; font-weight: 500;
+  color: var(--muted); text-decoration: none;
+  padding: 6px 14px; border-radius: 100px;
+  transition: all 0.2s;
+}
+.nav-item:hover { color: var(--text); background: var(--surface2); }
+.nav-item.active { color: var(--text); background: var(--surface2); font-weight: 600; }
+.nav-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin: 0 4px; }
+.nav-cta {
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--surface); background: var(--text);
+  padding: 7px 16px; border-radius: 100px; text-decoration: none;
+  transition: all 0.2s; margin-left: 4px;
+}
+.nav-cta:hover { background: var(--accent); }
+
+/* CONTAINER */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal.in { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.05s; } .d2 { transition-delay: 0.12s; }
+.d3 { transition-delay: 0.19s; } .d4 { transition-delay: 0.26s; }
+.d5 { transition-delay: 0.33s; } .d6 { transition-delay: 0.4s; }
+
+/* SECTION LABEL */
+.sec-label {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--muted);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px;
+}
+.sec-label::before { content: ''; width: 20px; height: 1px; background: var(--border2); display: block; }
+
+/* CARD BASE */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative; overflow: hidden;
+}
+.card:hover { border-color: var(--border2); box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
+
+/* ─────────────── HERO ─────────────── */
+.hero {
+  padding: 56px 0 48px;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: 24px; align-items: start;
+}
+.hero-left .sec-label { margin-bottom: 20px; }
+.hero-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.8rem, 5.5vw, 4.6rem);
+  line-height: 1.02; letter-spacing: -0.02em; color: var(--text);
+  margin-bottom: 6px;
+}
+.hero-name em { font-style: italic; color: var(--accent); }
+.hero-tagline {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 1.15rem; color: var(--muted); margin-bottom: 22px;
+  line-height: 1.5;
+}
+.hero-desc {
+  font-size: 0.95rem; color: var(--muted); max-width: 520px;
+  line-height: 1.75; margin-bottom: 28px;
+}
+.hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.chip {
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em;
+  padding: 5px 12px; border-radius: 100px;
+  border: 1px solid var(--border); color: var(--muted);
+  background: var(--surface); transition: all 0.2s;
+}
+.chip:hover { border-color: var(--border2); color: var(--text); }
+.chip.filled { background: var(--text); color: var(--bg); border-color: var(--text); }
+.chip.accent { background: rgba(200,80,58,0.08); border-color: rgba(200,80,58,0.3); color: var(--accent); }
+
+.hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-primary {
+  padding: 10px 24px; background: var(--text); color: var(--bg);
+  font-weight: 600; font-size: 0.85rem; border-radius: 100px;
+  text-decoration: none; transition: all 0.2s; border: 1px solid var(--text);
+}
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+.btn-ghost {
+  padding: 10px 22px; border: 1px solid var(--border); color: var(--muted);
+  font-weight: 500; font-size: 0.85rem; border-radius: 100px; text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: var(--border2); color: var(--text); }
+
+/* HERO RIGHT — phone + notion bento */
+.hero-right { display: flex; flex-direction: column; gap: 14px; }
+.phones-widget {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px 16px 0 16px;
+  overflow: hidden; position: relative;
+  display: flex; gap: 12px; align-items: flex-end;
+  min-height: 340px;
+}
+.phone-frame {
+  flex: 1; border-radius: 28px; overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.12);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;
+}
+.phone-frame img {
+  width: 100%; display: block; vertical-align: bottom;
+}
+.phone-frame.tall { transform: translateY(-16px); }
+.phones-label {
+  position: absolute; bottom: 14px; left: 16px; right: 16px;
+  background: rgba(255,255,255,0.9); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 10px 14px; font-size: 0.75rem; font-weight: 600; color: var(--text);
+}
+.phones-label span { color: var(--muted); font-weight: 400; display: block; font-size: 0.7rem; margin-top: 1px; }
+
+/* STATS widget */
+.stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+.stat-c {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px 12px;
+  text-align: center; transition: all 0.2s;
+}
+.stat-c:hover { border-color: var(--border2); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.stat-n {
+  font-family: 'Instrument Serif', serif; font-size: 2.2rem;
+  color: var(--text); line-height: 1;
+}
+.stat-n.accent { color: var(--accent); }
+.stat-l { font-size: 0.66rem; color: var(--muted); font-weight: 500; letter-spacing: 0.04em; margin-top: 4px; }
+
+/* ─────────────── BENTO GRID ─────────────── */
+.bento-row { display: grid; gap: 14px; margin-bottom: 14px; }
+.bento-2 { grid-template-columns: 1fr 1fr; }
+.bento-3 { grid-template-columns: 1fr 1fr 1fr; }
+.bento-32 { grid-template-columns: 1.4fr 1fr; }
+.bento-23 { grid-template-columns: 1fr 1.5fr; }
+
+.bcard {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px;
+  transition: all 0.22s; position: relative; overflow: hidden;
+}
+.bcard:hover { border-color: var(--border2); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+.bcard-label {
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+}
+.bcard h2 {
+  font-family: 'Instrument Serif', serif; font-size: 1.6rem;
+  line-height: 1.15; color: var(--text); margin-bottom: 10px;
+}
+.bcard h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.bcard p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+.bcard .accent-line {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+}
+.bcard:hover .accent-line { transform: scaleX(1); }
+
+/* about card bg accent */
+.bcard.hero-about {
+  background: linear-gradient(135deg, #fff 60%, rgba(200,80,58,0.05) 100%);
+}
+
+/* ─────────────── ABOUT ─────────────── */
+.about-quote {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 1.35rem; line-height: 1.55; color: var(--text);
+  border-left: 3px solid var(--accent); padding-left: 20px;
+  margin-bottom: 18px;
+}
+.strengths { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+.strength-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 14px; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 500;
+  color: var(--text); transition: all 0.2s; background: var(--surface);
+}
+.strength-item:hover { border-color: var(--accent); padding-left: 18px; }
+.str-num { font-size: 0.65rem; color: var(--muted); font-weight: 600; width: 18px; flex-shrink: 0; }
+
+/* dark card */
+.bcard.dark {
+  background: var(--text); color: var(--bg);
+  border-color: var(--text);
+}
+.bcard.dark .bcard-label { color: rgba(255,255,255,0.45); }
+.bcard.dark h2, .bcard.dark h3, .bcard.dark p { color: rgba(255,255,255,0.9); }
+.bcard.dark p { color: rgba(255,255,255,0.6); }
+.bcard.dark .stat-n { color: #ffffff; }
+.bcard.dark .stat-l { color: rgba(255,255,255,0.45); }
+
+/* accent card */
+.bcard.warm {
+  background: linear-gradient(135deg, #fdf0ec 0%, #fbe8e2 100%);
+  border-color: rgba(200,80,58,0.2);
+}
+.bcard.warm h3, .bcard.warm p { color: #6b3028; }
+.bcard.warm .bcard-label { color: var(--accent); }
+
+/* ─────────────── SKILLS ─────────────── */
+.skill-row { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
+.skill-item { }
+.skill-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; }
+.skill-name { font-size: 0.84rem; font-weight: 500; color: var(--text); }
+.skill-meta { font-size: 0.7rem; color: var(--muted); }
+.skill-track { height: 5px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+.skill-fill {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 3px; transition: width 1.2s cubic-bezier(0.1,0.8,0.2,1);
+}
+.skill-fill.blue { background: linear-gradient(90deg, var(--blue), #6b95d4); }
+.skill-fill.green { background: linear-gradient(90deg, var(--green), #5aaa80); }
+
+.cert-grid { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+.cert-chip {
+  font-size: 0.72rem; font-weight: 500;
+  padding: 4px 11px; border-radius: 100px;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--muted); transition: all 0.2s;
+}
+.cert-chip:hover { border-color: var(--border2); color: var(--text); }
+
+/* ─────────────── PROJECTS / APP ─────────────── */
+.app-showcase {
+  background: linear-gradient(135deg, #f0f4fb 0%, #e8f0fb 100%);
+  border: 1px solid rgba(58,95,160,0.2);
+  border-radius: var(--radius); padding: 28px;
+  display: flex; gap: 28px; align-items: center;
+  overflow: hidden; position: relative;
+}
+.app-showcase::before {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: rgba(58,95,160,0.08); pointer-events: none;
+}
+.app-text { flex: 1; min-width: 0; }
+.app-text .bcard-label { color: var(--blue); }
+.app-text h3 { font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.app-text p { font-size: 0.88rem; color: #4a5a7a; line-height: 1.7; margin-bottom: 14px; }
+.app-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.72rem; font-weight: 600;
+  padding: 5px 12px; border-radius: 100px;
+  background: var(--blue); color: white;
+}
+.app-phones { display: flex; gap: 10px; align-items: flex-end; flex-shrink: 0; }
+.app-phone {
+  width: 90px; border-radius: 16px; overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.08);
+}
+.app-phone img { width: 100%; display: block; }
+.app-phone.tall { transform: translateY(-12px); }
+
+/* KKH showcase overrides */
+.kkh-showcase::before {
+  background: rgba(61,122,90,0.07);
+}
+.kkh-showcase .app-phones { gap: 8px; }
+.kkh-showcase .app-phone { width: 80px; }
+.kkh-showcase .app-text p { color: #3a5a48; }
+
+/* ─────────────── TIMELINE ─────────────── */
+.tl { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 22px; }
+.tl::before {
+  content: '';
+  position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+.tl-item {
+  position: relative; padding: 0 0 22px 0;
+  opacity: 0; transform: translateX(-10px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.tl-item.in { opacity: 1; transform: none; }
+.tl-dot {
+  position: absolute; left: -26px; top: 4px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--border2);
+  transition: all 0.2s;
+}
+.tl-item:hover .tl-dot { background: var(--accent); border-color: var(--accent); }
+.tl-yr { font-size: 0.66rem; color: var(--muted); font-weight: 600; letter-spacing: 0.08em; margin-bottom: 3px; }
+.tl-t { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.tl-o { font-size: 0.76rem; color: var(--accent); font-weight: 500; margin-bottom: 5px; }
+.tl-d { font-size: 0.78rem; color: var(--muted); line-height: 1.65; }
+.tl-badge {
+  display: inline-flex; margin-top: 6px;
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em;
+  padding: 3px 9px; border-radius: 100px;
+  background: rgba(200,80,58,0.08); border: 1px solid rgba(200,80,58,0.2);
+  color: var(--accent);
+}
+
+/* ─────────────── ACTIVITIES ─────────────── */
+.act-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 8px; }
+.act-card {
+  padding: 18px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  transition: all 0.22s; position: relative; overflow: hidden;
+}
+.act-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+}
+.act-card:hover { border-color: var(--border2); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.07); }
+.act-card:hover::after { transform: scaleX(1); }
+.act-type {
+  font-size: 0.63rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 100px; border: 1px solid var(--border);
+  color: var(--muted); display: inline-block; margin-bottom: 9px;
+}
+.act-title { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 3px; line-height: 1.3; }
+.act-yr { font-size: 0.65rem; color: var(--muted); margin-bottom: 7px; }
+.act-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.65; }
+.act-result { font-size: 0.67rem; font-weight: 600; color: var(--accent); margin-top: 8px; letter-spacing: 0.05em; }
+
+/* ─────────────── LEADERSHIP ─────────────── */
+.ldr-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 8px; }
+.ldr-card {
+  padding: 20px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  text-align: center; transition: all 0.22s;
+  position: relative; overflow: hidden;
+}
+.ldr-card::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+}
+.ldr-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+.ldr-card:hover::before { transform: scaleX(1); }
+.ldr-num { font-family: 'Instrument Serif', serif; font-size: 2rem; color: var(--border2); margin-bottom: 6px; }
+.ldr-role { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.ldr-cat { font-size: 0.72rem; color: var(--accent); font-weight: 500; }
+.ldr-yr { font-size: 0.64rem; color: var(--muted); margin-top: 5px; }
+
+/* ─────────────── MARQUEE ─────────────── */
+.marquee-wrap {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 0; overflow: hidden;
+  position: relative; margin-bottom: 14px;
+}
+.marquee-wrap::before, .marquee-wrap::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
+}
+.marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--surface), transparent); }
+.marquee-wrap::after { right: 0; background: linear-gradient(to left, var(--surface), transparent); }
+.mq-row { display: flex; gap: 8px; animation: mq 30s linear infinite; width: max-content; }
+.mq-row-r { animation-direction: reverse; margin-top: 8px; }
+@keyframes mq { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+.mq-pill {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 13px; border: 1px solid var(--border); border-radius: 100px;
+  background: var(--surface); white-space: nowrap;
+  font-size: 0.72rem; font-weight: 500; color: var(--muted);
+  transition: all 0.2s;
+}
+.mq-pill:hover { border-color: var(--border2); color: var(--text); }
+.mq-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--border2); flex-shrink: 0; }
+.mq-dot.a { background: var(--accent); }
+.mq-dot.g { background: var(--green); }
+
+
+
+/* ─────────────── IDC / ROBOTICS FEATURE ─────────────── */
+.idc-showcase {
+  background: linear-gradient(135deg, #f7f0e8 0%, #eef4f0 100%);
+  border-color: rgba(200,80,58,0.18);
+}
+.idc-showcase::before { background: rgba(200,80,58,0.08); }
+.idc-showcase .app-text .bcard-label { color: var(--accent); }
+.idc-showcase .app-text p { color: #6a5248; }
+.idc-visual {
+  flex: 0 0 260px;
+  min-height: 190px;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(244,242,239,0.75));
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 -20px 55px rgba(61,122,90,0.08);
+}
+.terrain-line {
+  position: absolute; left: 18px; right: 18px; bottom: 32px;
+  height: 2px; background: repeating-linear-gradient(90deg, rgba(122,116,112,0.3) 0 16px, transparent 16px 24px);
+}
+.rover-body {
+  position: absolute; left: 44px; bottom: 58px;
+  width: 122px; height: 54px;
+  border: 2px solid rgba(26,24,20,0.76);
+  border-radius: 14px 14px 10px 10px;
+  background: linear-gradient(135deg, #ffffff, #ece8e1);
+}
+.rover-body::before {
+  content: '4WD';
+  position: absolute; top: 14px; left: 0; right: 0;
+  text-align: center; font-size: 0.72rem; font-weight: 700; color: var(--accent);
+  letter-spacing: 0.08em;
+}
+.wheel {
+  position: absolute; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--text); border: 5px solid #5d5752;
+  bottom: -15px;
+}
+.wheel.w1 { left: 8px; }
+.wheel.w2 { right: 8px; }
+.wheel.w3 { left: 42px; opacity: 0.55; }
+.wheel.w4 { right: 42px; opacity: 0.55; }
+.claw-arm {
+  position: absolute; left: 150px; bottom: 86px;
+  width: 82px; height: 8px; border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform-origin: left center;
+}
+.claw-arm::before {
+  content: ''; position: absolute; right: -22px; top: -8px;
+  width: 32px; height: 24px; border: 3px solid var(--accent);
+  border-left: 0; border-radius: 0 14px 14px 0;
+}
+.reach-zone {
+  position: absolute; right: 18px; bottom: 56px;
+  width: 32px; height: 50px;
+  border: 1px dashed rgba(200,80,58,0.55);
+  border-radius: 10px;
+}
+.reach-zone::after {
+  content: 'reach';
+  position: absolute; top: -21px; left: -2px;
+  font-size: 0.62rem; color: var(--accent); font-weight: 600;
+}
+
+/* ─────────────── PHOTO CAROUSEL ─────────────── */
+.photo-carousel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 22px;
+  align-items: center;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.carousel-copy h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.carousel-copy p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.carousel-stage {
+  position: relative;
+  min-height: 360px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface2);
+  overflow: hidden;
+}
+.carousel-track {
+  position: relative;
+  height: 360px;
+}
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 22px 52px 54px;
+  opacity: 0;
+  transform: translateX(18px);
+  transition: opacity 0.38s ease, transform 0.38s ease;
+  pointer-events: none;
+}
+.carousel-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.carousel-slide img {
+  max-width: 100%;
+  max-height: 284px;
+  object-fit: contain;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.12), 0 2px 7px rgba(0,0,0,0.08);
+}
+.carousel-slide figcaption {
+  position: absolute;
+  left: 54px;
+  right: 54px;
+  bottom: 15px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border2);
+  background: rgba(255,255,255,0.9);
+  color: var(--text);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.carousel-btn:hover { border-color: var(--accent); color: var(--accent); }
+.carousel-btn.prev { left: 12px; }
+.carousel-btn.next { right: 12px; }
+.carousel-dots {
+  display: flex;
+  gap: 7px;
+  margin-top: 12px;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--border2);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.carousel-dot.active {
+  width: 22px;
+  border-radius: 99px;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ─────────────── RELATED LINKS ─────────────── */
+.link-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.link-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.link-card .act-result {
+  display: inline-block;
+}
+
+/* ─────────────── CONTACT ─────────────── */
+.contact-card {
+  background: var(--text); color: var(--bg);
+  border-radius: var(--radius); padding: 52px;
+  text-align: center; position: relative; overflow: hidden;
+  margin-bottom: 14px;
+}
+.contact-card::before {
+  content: '';
+  position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,80,58,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.contact-eyebrow { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.contact-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem,5vw,3.8rem); font-weight: 400; letter-spacing: -0.02em;
+  color: #ffffff; line-height: 1.05; margin-bottom: 10px;
+}
+.contact-name em { font-style: italic; color: var(--accent2); }
+.contact-sub { font-size: 0.88rem; color: rgba(255,255,255,0.5); margin-bottom: 30px; }
+.contact-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.btn-contact-primary {
+  padding: 11px 28px; background: white; color: var(--text);
+  font-weight: 600; font-size: 0.85rem; border-radius: 100px;
+  text-decoration: none; transition: all 0.2s;
+}
+.btn-contact-primary:hover { background: var(--accent2); color: white; }
+.btn-contact-ghost {
+  padding: 11px 22px; border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7); font-weight: 500; font-size: 0.85rem;
+  border-radius: 100px; text-decoration: none; transition: all 0.2s;
+}
+.btn-contact-ghost:hover { border-color: rgba(255,255,255,0.5); color: white; }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border); padding: 20px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.72rem; color: var(--muted);
+}
+.footer-name {
+  font-family: 'Instrument Serif', serif; font-size: 1rem; color: var(--text);
+}
+
+/* SECTION TITLE */
+.section-h {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2rem; color: var(--text); margin-bottom: 4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-right { order: -1; }
+  .bento-2, .bento-3, .bento-32, .bento-23 { grid-template-columns: 1fr; }
+  .act-grid, .ldr-grid { grid-template-columns: 1fr 1fr; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .app-showcase { flex-direction: column; }
+  .idc-visual { width: 100%; flex-basis: auto; }
+  .photo-carousel { grid-template-columns: 1fr; }
+  nav .nav-item:nth-child(n+4) { display: none; }
+}
+@media (max-width: 560px) {
+  .act-grid, .ldr-grid { grid-template-columns: 1fr; }
+  .wrap { padding: 28px 16px; }
+  .contact-card { padding: 36px 20px; }
+  .carousel-stage, .carousel-track { height: 300px; min-height: 300px; }
+  .carousel-slide { padding: 18px 42px 50px; }
+  .carousel-slide img { max-height: 226px; }
+  .carousel-slide figcaption { left: 42px; right: 42px; }
+  .idc-visual { min-height: 168px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-item active">Home</a>
+    <div class="nav-dot"></div>
+    <a href="#about" class="nav-item">About</a>
+    <a href="#skills" class="nav-item">Skills</a>
+    <a href="#work" class="nav-item">Work</a>
+    <a href="#links" class="nav-item">Links</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="hero">
+  <div class="hero-grid">
+    <div class="hero-left reveal">
+      <div class="sec-label">SST Singapore — Class S403 — 2026</div>
+      <h1 class="hero-name">Prakash<br><em>Dhanvin</em></h1>
+      <p class="hero-tagline">Blending physical silicon<br>with applied intelligence.</p>
+      <p class="hero-desc">Builder. Competitor. Leader. I live where code meets creativity I range from making iOS and Android apps, solving olympiad problems be it math or python, competing at national level, and building things that hold together under pressure.</p>
+      <div class="hero-chips">
+        <span class="chip filled">SC Vice Chairperson</span>
+        <span class="chip accent">SST Inc CTO</span>
+        <span class="chip">Swift Developer</span>
+        <span class="chip">bob the builder</span>
+        <span class="chip">Kotlin Developer</span>
+        <span class="chip">Math Olympian</span>
+        <span class="chip">PerseCoding Finalist PCTC</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#work" class="btn-primary">Explore My Work</a>
+        <a href="#contact" class="btn-ghost">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-right reveal d2">
+      <div class="phones-widget">
+        <div class="phone-frame">
+          <img src="assets/moveability-home.jpg" alt="moveAbility app home screen">
+        </div>
+        <div class="phone-frame tall">
+          <img src="assets/moveability-exercise.jpg" alt="moveAbility exercise screen">
+        </div>
+        <div class="phones-label">
+          moveAbility
+          <span>iOS App, Swift Accelerator Programme made to give accessible exercise to all</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS ROW -->
+<div class="stats-row reveal">
+  <div class="stat-c">
+    <div class="stat-n accent">4+</div>
+    <div class="stat-l">Years at SST</div>
+  </div>
+  <div class="stat-c">
+    <div class="stat-n">20+</div>
+    <div class="stat-l">Certs & Awards</div>
+  </div>
+  <div class="stat-c">
+    <div class="stat-n">3</div>
+    <div class="stat-l">Leadership Roles</div>
+  </div>
+  <div class="stat-c">
+    <div class="stat-n">2</div>
+    <div class="stat-l">years in Electronics course</div>
+  </div>
+</div>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section id="about" style="padding-top: 56px;">
+  <div class="sec-label">About</div>
+  <h2 class="section-h" style="margin-bottom: 20px;">What makes "me"?</h2>
+
+  <div class="bento-row bento-32 reveal">
+    <div class="bcard hero-about">
+      <div class="about-quote">
+        "I love building things. There is something  satisfying about starting with random and simple components such as electronics, code, an idea I think of when i'm in the middle of something and all of that into something that actually works. To me it's like having random lego bricks and putting them into something of value"
+      </div>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:14px;">What pulls me in is problem solving, where I need to figure out <strong style="color:var(--text)">quality under time constraints</strong>, making something stable and beneficial at the same time. I treat engineering like a puzzle, where creativity comes first, rigour second.</p>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:14px;">I am also hardwired to <strong style="color:var(--text)">compete</strong>. Whether it is a coding olympiad, a random performance task, or a leadership election  I want to be sharp, prepared, and ahead of the curve.</p>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.75;">Outside of engineering, I enjoy sports such as Badminton that require critical thinking at every second</p>
+      <div class="accent-line"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="bcard dark">
+        <div class="bcard-label">Profile</div>
+        <div style="font-size:0.82rem;line-height:1.9;color:rgba(255,255,255,0.6);">
+          <strong style="color:rgba(255,255,255,0.9);">School of Science & Technology, SG</strong><br>
+          Class S403 · Graduation 2026<br>
+          CCA: Badminton
+          Personal projects: Building a digital clock from scratch
+        </div>
+      </div>
+      <div class="strengths">
+        <div class="strength-item"><span class="str-num">01</span>Strategic — I create alternative ways to proceed. Faced with any given scenario, I can quickly spot the relevant patterns and issues.</div>
+        <div class="strength-item"><span class="str-num">02</span>Achiever — I work hard and possess a great deal of stamina. I take immense satisfaction in being busy and productive.</div>
+        <div class="strength-item"><span class="str-num">03</span>Analytical — I search for reasons and causes. You have the ability to think about all of the factors that might affect a situation.</div>
+        <div class="strength-item"><span class="str-num">04</span>Command — I have presence. I can take control of a situation and make decisions.</div>
+        <div class="strength-item"><span class="str-num">05</span>Competition — I measure my progress against others' performance. I strive to win first place and revel in contests.</div>
+
+      </div>
+      <div class="bento-row bento-2" style="margin-bottom:0;">
+        <div class="bcard warm">
+          <div class="bcard-label">Builder</div>
+          <h3>Builder at Heart, Builder in mind</h3>
+          <p>Electronics, code, 3D models. Structural problems get solved with creativity.</p>
+        </div>
+        <div class="bcard warm">
+          <div class="bcard-label">Downtime</div>
+          <h3>One Piece</h3>
+          <p>The world building is uhh abit lengthy.Need time to catch up :(</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SKILLS ═══════ -->
+<section id="skills" style="padding-top: 56px;">
+  <div class="sec-label">Skills</div>
+  <h2 class="section-h" style="margin-bottom: 20px;">Tools of the trade</h2>
+
+  <div class="bento-row bento-2 reveal" id="sk-trigger">
+    <div class="bcard">
+      <div class="bcard-label">// Development & Computing</div>
+      <div class="skill-row">
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">SwiftUI / iOS</span><span class="skill-meta">Swift Accelerator · Certified</span></div><div class="skill-track"><div class="skill-fill" data-fill="90%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Kotlin / Android</span><span class="skill-meta">Android Dev Certified</span></div><div class="skill-track"><div class="skill-fill" data-fill="78%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Python</span><span class="skill-meta">DataCamp · Data Analysis</span></div><div class="skill-track"><div class="skill-fill" data-fill="83%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Informatics / Algorithms</span><span class="skill-meta">IJAO Commendation</span></div><div class="skill-track"><div class="skill-fill" data-fill="85%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">AI & Machine Learning</span><span class="skill-meta">Oracle AI Proficiency, YOLO, Ollama</span></div><div class="skill-track"><div class="skill-fill blue" data-fill="76%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Cybersecurity</span><span class="skill-meta">TryHackMe Certified, YCEP, SST CTF, A</span></div><div class="skill-track"><div class="skill-fill blue" data-fill="68%"></div></div></div>
+      </div>
+    </div>
+    <div class="bcard">
+      <div class="bcard-label">// Science, Maths & Maker</div>
+      <div class="skill-row">
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Mathematics</span><span class="skill-meta">SASMO Silver · Intl Maths Rd 2</span></div><div class="skill-track"><div class="skill-fill green" data-fill="88%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Data Science</span><span class="skill-meta">SAS Certified · DataCamp</span></div><div class="skill-track"><div class="skill-fill green" data-fill="74%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Electronics & Hardware</span><span class="skill-meta">Taught P School · STMicro</span></div><div class="skill-track"><div class="skill-fill green" data-fill="74%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">3D Modelling & Printing</span><span class="skill-meta">Prototyping & Design</span></div><div class="skill-track"><div class="skill-fill" data-fill="66%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Drone Engineering</span><span class="skill-meta">SUTD Challenge — 2nd Place</span></div><div class="skill-track"><div class="skill-fill" data-fill="70%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Teaching & Mentoring</span><span class="skill-meta">Google & Apple Teacher Cert, Swift Accelerator mentor</span></div><div class="skill-track"><div class="skill-fill green" data-fill="86%"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bcard reveal" style="margin-top:14px;">
+    <div class="bcard-label">Certifications Earned</div>
+    <div class="cert-grid">
+      <span class="cert-chip">SwiftUI iOS Dev</span><span class="cert-chip">Kotlin Android</span><span class="cert-chip">Oracle AI Proficiency</span><span class="cert-chip">Google Teacher</span><span class="cert-chip">Apple Teacher</span><span class="cert-chip">TryHackMe Cybersec</span><span class="cert-chip">DataCamp Data Science</span><span class="cert-chip">SAS Certified</span><span class="cert-chip">Python Data Analysis</span><span class="cert-chip">Perse Distinction</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ WORK / EXPERIENCE ═══════ -->
+<section id="work" style="padding-top: 56px;">
+  <div class="sec-label">Experience</div>
+  <h2 class="section-h" style="margin-bottom: 20px;">A journey of growth</h2>
+
+  <!-- App showcase -->
+  <div class="app-showcase reveal" style="margin-bottom:14px;">
+    <div class="app-text">
+      <div class="bcard-label">Featured Project</div>
+      <h3>moveAbility — iOS App</h3>
+      <p>An accessibility-focused fitness app built for wheelchair users, featuring guided exercises, rep tracking, streak monitoring, and calorie goals. Developed through the Apple Swift Accelerator Programme.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;">
+        <span class="cert-chip" style="border-color:rgba(58,95,160,0.3);color:var(--blue);">SwiftUI</span>
+        <span class="cert-chip" style="border-color:rgba(58,95,160,0.3);color:var(--blue);">HealthKit</span>
+        <span class="cert-chip" style="border-color:rgba(58,95,160,0.3);color:var(--blue);">iOS</span>
+        <span class="cert-chip" style="border-color:rgba(58,95,160,0.3);color:var(--blue);">Accessibility</span>
+      </div>
+      <span class="app-badge">Swift Accelerator Programme</span>
+    </div>
+    <div class="app-phones">
+      <div class="app-phone">
+        <img src="assets/moveability-home.jpg" alt="moveAbility home screen">
+      </div>
+      <div class="app-phone tall">
+        <img src="assets/moveability-exercise.jpg" alt="moveAbility exercise screen">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- KKH App showcase -->
+  <div class="app-showcase reveal kkh-showcase" style="margin-bottom:14px; background: linear-gradient(135deg, #e8f4f0 0%, #f0f7ff 100%); border: 1.5px solid #3d7a5a30;">
+    <div class="app-text">
+      <div class="bcard-label" style="color: var(--green);">★ Featured — KKH Hospital Collaboration</div>
+      <h3 style="margin-bottom:10px;">Neonatal Resuscitation <span style="font-style:italic; font-family:'Instrument Serif', serif; color:var(--green);">— Guiding Hands, Saving Tiny Lives</span></h3>
+      <p style="margin-bottom:14px;">Built in direct collaboration with <strong>KK Women's and Children's Hospital (KKH)</strong>, this iOS app is an evidence-based clinical decision support tool for neonatal resuscitation following the SNRC 2021 Guidelines. It calculates weight-based drug dosages, equipment sizes, and APGAR scores in real time — designed to be used at the bedside during critical care.</p>
+      <p style="color:var(--green); font-weight:600; margin-bottom:16px; font-size:0.92rem;">This app is set to be implemented in KKH and hospitals across Singapore upon project completion.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;">
+        <span class="cert-chip" style="border-color:rgba(61,122,90,0.35);color:var(--green);">SwiftUI</span>
+        <span class="cert-chip" style="border-color:rgba(61,122,90,0.35);color:var(--green);">iOS</span>
+        <span class="cert-chip" style="border-color:rgba(61,122,90,0.35);color:var(--green);">Clinical Decision Support</span>
+        <span class="cert-chip" style="border-color:rgba(61,122,90,0.35);color:var(--green);">SNRC 2021 Guidelines</span>
+        <span class="cert-chip" style="border-color:rgba(61,122,90,0.35);color:var(--green);">Neonatology</span>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <span style="display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1.5px solid var(--border2);padding:5px 12px;border-radius:20px;font-size:0.78rem;color:var(--muted);font-weight:500;">
+          <span style="width:7px;height:7px;background:#f59e0b;border-radius:50%;display:inline-block;"></span> IDP Capstone — In Progress
+        </span>
+        <span style="display:inline-flex;align-items:center;gap:6px;background:var(--green);padding:6px 14px;border-radius:20px;font-size:0.78rem;color:#fff;font-weight:600;">KKH Partnership</span>
+      </div>
+    </div>
+    <div class="app-phones">
+      <div class="app-phone">
+        <img src="assets/kkh-neonatal-main.png" alt="Neonatal Resuscitation main screen">
+      </div>
+      <div class="app-phone tall">
+        <img src="assets/kkh-apgar-calculator.png" alt="APGAR Score Calculator screen">
+      </div>
+      <div class="app-phone">
+        <img src="assets/kkh-resuscitation-algorithm.png" alt="Resuscitation Algorithm screen">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Integrated Design Challenge showcase -->
+  <div class="app-showcase reveal idc-showcase" style="margin-bottom:14px;">
+    <div class="app-text">
+      <div class="bcard-label">Integrated Design Challenge</div>
+      <h3>Rescue Rover — 4WD + Extending Claw</h3>
+      <p>For the Integrated Design Challenge, many teams went with a simple claw mounted on a two-wheel-drive base. My group designed for tougher rescue conditions instead: a 4WD drivetrain for grip and stability, paired with an extending claw that can reach into areas where the robot body cannot safely pass.</p>
+      <p style="font-weight:600;color:var(--accent);margin-bottom:14px;">The goal was a more realistic rescue workflow: cross rough terrain when possible, then extend beyond the chassis to retrieve or assist when debris, gaps, or unstable ground block the robot itself.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;">
+        <span class="cert-chip" style="border-color:rgba(200,80,58,0.3);color:var(--accent);">4WD Drivetrain</span>
+        <span class="cert-chip" style="border-color:rgba(200,80,58,0.3);color:var(--accent);">Extending Claw</span>
+        <span class="cert-chip" style="border-color:rgba(200,80,58,0.3);color:var(--accent);">Rescue Robotics</span>
+        <span class="cert-chip" style="border-color:rgba(200,80,58,0.3);color:var(--accent);">Terrain-First Design</span>
+      </div>
+      <span class="app-badge" style="background:var(--accent);">Real-world scenario thinking</span>
+    </div>
+    <div class="idc-visual" aria-label="4WD rescue rover with extending claw">
+      <div class="terrain-line"></div>
+      <div class="reach-zone"></div>
+      <div class="rover-body">
+        <div class="wheel w1"></div>
+        <div class="wheel w2"></div>
+        <div class="wheel w3"></div>
+        <div class="wheel w4"></div>
+      </div>
+      <div class="claw-arm"></div>
+    </div>
+  </div>
+
+  <!-- Photo carousel -->
+  <div class="photo-carousel reveal" aria-label="Portfolio photo carousel">
+    <div class="carousel-copy">
+      <div class="bcard-label">Photo Carousel</div>
+      <h3>Builds in motion</h3>
+      <p>A quick rotating view of the app interfaces and project work already featured in the portfolio, now loaded from GitHub-ready asset files instead of inline image blobs.</p>
+      <div class="carousel-dots" aria-label="Carousel slide controls">
+        <button class="carousel-dot active" type="button" aria-label="Show moveAbility home screen" data-slide="0"></button>
+        <button class="carousel-dot" type="button" aria-label="Show moveAbility exercise screen" data-slide="1"></button>
+        <button class="carousel-dot" type="button" aria-label="Show KKH neonatal screen" data-slide="2"></button>
+        <button class="carousel-dot" type="button" aria-label="Show APGAR calculator screen" data-slide="3"></button>
+        <button class="carousel-dot" type="button" aria-label="Show resuscitation algorithm screen" data-slide="4"></button>
+      </div>
+    </div>
+    <div class="carousel-stage">
+      <button class="carousel-btn prev" type="button" aria-label="Previous slide" title="Previous slide">‹</button>
+      <div class="carousel-track">
+        <figure class="carousel-slide active">
+          <img src="assets/moveability-home.jpg" alt="moveAbility app home screen">
+          <figcaption>moveAbility — accessible exercise home screen</figcaption>
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/moveability-exercise.jpg" alt="moveAbility exercise screen">
+          <figcaption>moveAbility — guided exercise and tracking</figcaption>
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/kkh-neonatal-main.png" alt="Neonatal Resuscitation main screen">
+          <figcaption>KKH collaboration — neonatal resuscitation dashboard</figcaption>
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/kkh-apgar-calculator.png" alt="APGAR Score Calculator screen">
+          <figcaption>KKH collaboration — APGAR score calculator</figcaption>
+        </figure>
+        <figure class="carousel-slide">
+          <img src="assets/kkh-resuscitation-algorithm.png" alt="Resuscitation Algorithm screen">
+          <figcaption>KKH collaboration — resuscitation algorithm view</figcaption>
+        </figure>
+      </div>
+      <button class="carousel-btn next" type="button" aria-label="Next slide" title="Next slide">›</button>
+    </div>
+  </div>
+  <div class="bento-row bento-2 reveal">
+    <div class="bcard">
+      <div class="bcard-label">// Academic & Technical</div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2021 – 2023</div><div class="tl-t">IJAO Informatics Olympiad</div><div class="tl-o">International — Commendation</div><div class="tl-d">Competed across multiple years earning commendations for algorithmic problem-solving.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2023 – 2025</div><div class="tl-t">International Maths Contest</div><div class="tl-o">Russian Math School — Round 2 × 3</div><div class="tl-d">Reached the second round three consecutive times in a prestigious global competition.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2024</div><div class="tl-t">PerseCoding Challenge</div><div class="tl-o">Cambridge — International Finalist</div><div class="tl-d">Reached the final round of the globally recognised Perse challenge.</div><span class="tl-badge">International Finalist — Distinction</span></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2024</div><div class="tl-t">SASMO Math Olympiad</div><div class="tl-o">Silver Medal</div><div class="tl-d">Earned silver at the Singapore and Asian Schools Math Olympiad.</div><span class="tl-badge">Silver Medal</span></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2024</div><div class="tl-t">SUTD Drone Challenge</div><div class="tl-o">Runner-Up</div><div class="tl-d">Engineered and deployed a drone solution at SUTD's competitive challenge.</div><span class="tl-badge">2nd Place</span></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2025</div><div class="tl-t">STMicroelectronics SWRAP</div><div class="tl-o">5-Day Industry Attachment</div><div class="tl-d">Immersive attachment at STMicro — hands-on semiconductor engineering.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2025 – 2026</div><div class="tl-t">IDP Capstone — KKH Hospital</div><div class="tl-o">Healthcare Community Research</div><div class="tl-d">Leading a capstone project with KKH to solve a real-world community healthcare challenge.</div></div>
+      </div>
+    </div>
+    <div class="bcard">
+      <div class="bcard-label">// Industry, Sport & Community</div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2024</div><div class="tl-t">Taekwondo — Senior Black Belt</div><div class="tl-o">Martial Arts</div><div class="tl-d">Achieved Senior Black Belt — years of disciplined training and mental fortitude.</div><span class="tl-badge">Senior Black Belt</span></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2024 – 2026</div><div class="tl-t">NSG Badminton Championships</div><div class="tl-o">School Representative</div><div class="tl-d">Represented SST across three seasons in the National School Games.</div><span class="tl-badge">School Representative</span></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2024</div><div class="tl-t">Electronics Teaching Outreach</div><div class="tl-o">Primary School — Community</div><div class="tl-d">Voluntarily taught electronics to primary school students, sparking STEM curiosity.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2024</div><div class="tl-t">SG Bono — Laptop Refurbishment</div><div class="tl-o">Community Service</div><div class="tl-d">Repaired donated laptops for underprivileged families — bridging the digital divide.</div><span class="tl-badge">Community Impact</span></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2025</div><div class="tl-t">S3 IDP — Jakarta — BBS Collab</div><div class="tl-o">Flood Solutions Prototype</div><div class="tl-d">Collaborated with Bina Bangsa School students to prototype solutions for urban flooding.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2025</div><div class="tl-t">Swift Accelerator — Mentor</div><div class="tl-o">9-Month Programme</div><div class="tl-d">Returned as a mentor guiding junior students through SwiftUI development.</div><span class="tl-badge">Alumnus & Mentor</span></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2025</div><div class="tl-t">Internship — TinkerTanker</div><div class="tl-o">Technology Industry</div><div class="tl-d">Contributed to real projects at TinkerTanker, gaining professional tech experience.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ACTIVITIES ═══════ -->
+<section id="activities" style="padding-top: 56px;">
+  <div class="sec-label">Activities & Achievements</div>
+  <h2 class="section-h" style="margin-bottom: 20px;">Beyond the classroom</h2>
+  <div class="act-grid reveal">
+    <div class="act-card"><div class="act-type">CCA</div><div class="act-title">NSG Badminton Championships</div><div class="act-yr">2024 – 2026</div><div class="act-desc">Represented SST across three National School Games seasons, committing to rigorous training and competitive execution.</div><div class="act-result">↗ School Representative</div></div>
+    <div class="act-card"><div class="act-type">CCA</div><div class="act-title">East Badminton Academy</div><div class="act-yr">2024</div><div class="act-desc">Competed in the East Badminton Academy Competition, demonstrating discipline and sporting excellence beyond school.</div></div>
+    <div class="act-card"><div class="act-type">CCA</div><div class="act-title">WYSE Badminton Competition</div><div class="act-yr">March 2026</div><div class="act-desc">Continued competitive athletic performance at inter-school level in the WYSE competition.</div></div>
+    <div class="act-card"><div class="act-type">Academic</div><div class="act-title">Perse Coding Challenge</div><div class="act-yr">2024 — International</div><div class="act-desc">Reached the final round of the globally recognised Perse Challenge, showcasing advanced programming under pressure.</div><div class="act-result">↗ International Finalist — Distinction</div></div>
+    <div class="act-card"><div class="act-type">Academic</div><div class="act-title">SASMO Math Olympiad</div><div class="act-yr">2024</div><div class="act-desc">Achieved Silver at the Singapore and Asian Schools Math Olympiad — earned through years of perseverance and preparation.</div><div class="act-result">↗ Silver Medal</div></div>
+    <div class="act-card"><div class="act-type">Service Learning</div><div class="act-title">SG Bono — Laptop Refurbishment</div><div class="act-yr">2024</div><div class="act-desc">Troubleshot, repaired, and prepared donated laptops for underprivileged families — bridging the digital divide.</div><div class="act-result">↗ Community Impact</div></div>
+    <div class="act-card"><div class="act-type">CCA</div><div class="act-title">Pilot Pen Competition</div><div class="act-yr">2024</div><div class="act-desc">Explored creative expression as a counterpoint to technical pursuits — proving creativity spans disciplines.</div></div>
+    <div class="act-card"><div class="act-type">External</div><div class="act-title">S2 OLE — Thailand Agriculture</div><div class="act-yr">2024</div><div class="act-desc">Worked with Thai peers to understand agricultural challenges and designed technology-enabled solutions.</div></div>
+    <div class="act-card"><div class="act-type">External</div><div class="act-title">Swift Accelerator Programme</div><div class="act-yr">2024 — Mentor 2025</div><div class="act-desc">Completed Apple's Swift Accelerator Programme, mastering iOS and SwiftUI. Returned as a mentor the following year.</div><div class="act-result">↗ Alumnus & Mentor</div></div>
+    <div class="act-card"><div class="act-type">Academic</div><div class="act-title">SUTD Drone Challenge</div><div class="act-yr">2024</div><div class="act-desc">Engineered a drone solution at SUTD's challenge — applying structural design thinking and real-time problem solving.</div><div class="act-result">↗ 2nd Place</div></div>
+    <div class="act-card"><div class="act-type">Engineering</div><div class="act-title">Integrated Design Challenge</div><div class="act-yr">Rescue Robotics</div><div class="act-desc">Designed a 4WD rescue rover with an extending claw, built around terrain and reach constraints instead of a basic 2WD claw mechanism.</div><div class="act-result">↗ 4WD + Extending Claw</div></div>
+    <div class="act-card"><div class="act-type">External</div><div class="act-title">S3 IDP — Jakarta — BBS Collab</div><div class="act-yr">2025</div><div class="act-desc">Travelled to Jakarta to collaborate with Bina Bangsa School students prototyping solutions for urban flooding.</div></div>
+    <div class="act-card"><div class="act-type">Academic</div><div class="act-title">IDP Capstone — KKH hospital</div><div class="act-yr">2025 – 2026</div><div class="act-desc">Leading a capstone project with KKH Hospital researching and prototyping solutions to a real community healthcare problem.</div><div class="act-result">↗ In Progress</div></div>
+  </div>
+</section>
+
+<!-- ═══════ LEADERSHIP ═══════ -->
+<section id="leadership" style="padding-top: 56px;">
+  <div class="sec-label">Leadership</div>
+  <h2 class="section-h" style="margin-bottom: 20px;">Guiding teams forward</h2>
+  <div class="ldr-grid reveal">
+    <div class="ldr-card"><div class="ldr-num">01</div><div class="ldr-role">SC Vice Chairperson</div><div class="ldr-cat">Student Council</div><div class="ldr-yr">2025 – 2026</div></div>
+    <div class="ldr-card"><div class="ldr-num">02</div><div class="ldr-role">CTO — SST Inc</div><div class="ldr-cat">INC Programme</div><div class="ldr-yr">2025 – 2026</div></div>
+    <div class="ldr-card"><div class="ldr-num">03</div><div class="ldr-role">SNW IC</div><div class="ldr-cat">Class Leadership</div><div class="ldr-yr">2025</div></div>
+    <div class="ldr-card"><div class="ldr-num">04</div><div class="ldr-role">Grad Tea Overseer</div><div class="ldr-cat">SC EXCO</div><div class="ldr-yr">2025 – 2026</div></div>
+    <div class="ldr-card"><div class="ldr-num">05</div><div class="ldr-role">SConnect Overseer</div><div class="ldr-cat">SC EXCO</div><div class="ldr-yr">2025 – 2026</div></div>
+    <div class="ldr-card"><div class="ldr-num">06</div><div class="ldr-role">Badge Ceremony OC</div><div class="ldr-cat">JSC Organising Committee</div><div class="ldr-yr">2025</div></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div style="padding-top: 48px;">
+  <div class="marquee-wrap reveal">
+    <div class="mq-row">
+      <div class="mq-pill"><div class="mq-dot a"></div>SwiftUI iOS Dev</div>
+      <div class="mq-pill"><div class="mq-dot"></div>Kotlin Android</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>Oracle AI Proficiency</div>
+      <div class="mq-pill"><div class="mq-dot"></div>Google Teacher</div>
+      <div class="mq-pill"><div class="mq-dot g"></div>Apple Teacher</div>
+      <div class="mq-pill"><div class="mq-dot"></div>TryHackMe Cybersec</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>DataCamp Data Science</div>
+      <div class="mq-pill"><div class="mq-dot"></div>SAS Certified</div>
+      <div class="mq-pill"><div class="mq-dot g"></div>Python Data Analysis</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>PerseCoding Distinction</div>
+      <div class="mq-pill"><div class="mq-dot"></div>SwiftUI iOS Dev</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>Kotlin Android</div>
+      <div class="mq-pill"><div class="mq-dot"></div>Oracle AI Proficiency</div>
+      <div class="mq-pill"><div class="mq-dot g"></div>Google Teacher</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>Apple Teacher</div>
+      <div class="mq-pill"><div class="mq-dot"></div>TryHackMe Cybersec</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>DataCamp Data Science</div>
+      <div class="mq-pill"><div class="mq-dot"></div>SAS Certified</div>
+      <div class="mq-pill"><div class="mq-dot g"></div>Python Data Analysis</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>Perse Distinction</div>
+    </div>
+    <div class="mq-row mq-row-r">
+      <div class="mq-pill"><div class="mq-dot"></div>SUTD Drone — 2nd Place</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>IDC 4WD Rescue Rover</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>IDC 4WD Rescue Rover</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>SASMO Silver Medal</div>
+      <div class="mq-pill"><div class="mq-dot"></div>Taekwondo Sr Black Belt</div>
+      <div class="mq-pill"><div class="mq-dot g"></div>IJAO Commendation</div>
+      <div class="mq-pill"><div class="mq-dot"></div>STMicro SWRAP</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>NSG Badminton Rep</div>
+      <div class="mq-pill"><div class="mq-dot"></div>Intl Maths Round 2 × 3</div>
+      <div class="mq-pill"><div class="mq-dot g"></div>Swift Accelerator Mentor</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>KKH Capstone Project</div>
+      <div class="mq-pill"><div class="mq-dot"></div>SUTD Drone — 2nd Place</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>SASMO Silver Medal</div>
+      <div class="mq-pill"><div class="mq-dot"></div>Taekwondo Sr Black Belt</div>
+      <div class="mq-pill"><div class="mq-dot g"></div>IJAO Commendation</div>
+      <div class="mq-pill"><div class="mq-dot"></div>STMicro SWRAP</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>NSG Badminton Rep</div>
+      <div class="mq-pill"><div class="mq-dot"></div>Intl Maths Round 2 × 3</div>
+      <div class="mq-pill"><div class="mq-dot g"></div>Swift Accelerator Mentor</div>
+      <div class="mq-pill"><div class="mq-dot a"></div>KKH Capstone Project</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════ LINKS ═══════ -->
+<section id="links" style="padding-top: 56px;">
+  <div class="sec-label">Links</div>
+  <h2 class="section-h" style="margin-bottom: 20px;">Connect & references</h2>
+  <div class="act-grid reveal">
+    <a class="act-card link-card" href="mailto:prakashdhanvin@gmail.com"><div class="act-type">Contact</div><div class="act-title">Email</div><div class="act-yr">Direct</div><div class="act-desc">Reach me for projects, collaborations, internships, and questions.</div><div class="act-result">↗ Send Email</div></a>
+    <a class="act-card link-card" href="https://www.linkedin.com/search/results/all/?keywords=Prakash%20Dhanvin" target="_blank" rel="noopener noreferrer"><div class="act-type">Profile</div><div class="act-title">LinkedIn</div><div class="act-yr">Professional</div><div class="act-desc">A professional profile link area for networking and portfolio context.</div><div class="act-result">↗ Open LinkedIn</div></a>
+    <a class="act-card link-card" href="https://www.sst.edu.sg/" target="_blank" rel="noopener noreferrer"><div class="act-type">School</div><div class="act-title">SST Singapore</div><div class="act-yr">S403 — 2026</div><div class="act-desc">School of Science and Technology, Singapore — the applied learning environment behind many of these builds.</div><div class="act-result">↗ Visit SST</div></a>
+    <a class="act-card link-card" href="https://pctc.perse.co.uk/" target="_blank" rel="noopener noreferrer"><div class="act-type">Competition</div><div class="act-title">Perse Coding Team Challenge</div><div class="act-yr">PCTC</div><div class="act-desc">The coding challenge connected to my international finalist and distinction achievement.</div><div class="act-result">↗ Visit PCTC</div></a>
+    <a class="act-card link-card" href="https://www.sutd.edu.sg/" target="_blank" rel="noopener noreferrer"><div class="act-type">Competition</div><div class="act-title">SUTD</div><div class="act-yr">Drone Challenge</div><div class="act-desc">Singapore University of Technology and Design, connected to the drone engineering challenge experience.</div><div class="act-result">↗ Visit SUTD</div></a>
+    <a class="act-card link-card" href="https://www.kkh.com.sg/" target="_blank" rel="noopener noreferrer"><div class="act-type">Partner</div><div class="act-title">KK Women's and Children's Hospital</div><div class="act-yr">IDP Capstone</div><div class="act-desc">Healthcare partner context for the neonatal resuscitation clinical decision support app.</div><div class="act-result">↗ Visit KKH</div></a>
+    <a class="act-card link-card" href="https://developer.apple.com/sg/swift-accelerator/" target="_blank" rel="noopener noreferrer"><div class="act-type">Programme</div><div class="act-title">Apple Swift Accelerator</div><div class="act-yr">SwiftUI</div><div class="act-desc">Programme context for moveAbility and my Swift development pathway.</div><div class="act-result">↗ Visit Apple</div></a>
+    <a class="act-card link-card" href="https://www.st.com/content/st_com/en.html" target="_blank" rel="noopener noreferrer"><div class="act-type">Industry</div><div class="act-title">STMicroelectronics</div><div class="act-yr">SWRAP</div><div class="act-desc">Industry attachment context for semiconductor and embedded technology exposure.</div><div class="act-result">↗ Visit ST</div></a>
+    <a class="act-card link-card" href="https://www.tinkertanker.com/" target="_blank" rel="noopener noreferrer"><div class="act-type">Industry</div><div class="act-title">Tinkertanker</div><div class="act-yr">Internship</div><div class="act-desc">Technology internship context for real project work and professional engineering exposure.</div><div class="act-result">↗ Visit Tinkertanker</div></a>
+  </div>
+</section>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section id="contact" style="padding-top: 8px;">
+  <div class="contact-card reveal">
+    <div class="contact-eyebrow">Singapore — S403 — 2026 — Open to Connect</div>
+    <div class="contact-name">Prakash <em>Dhanvin</em></div>
+    <p class="contact-sub">Student — Developer — Athlete — Leader</p>
+    <div class="contact-btns">
+      <a href="mailto:prakashdhanvin@gmail.com" class="btn-contact-primary">Send Email</a>
+      <a href="#links" class="btn-contact-ghost">Links</a>
+      <a href="#hero" class="btn-contact-ghost">Back to Top</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Prakash Dhanvin</div>
+  <span></span>
+  <span style="font-size:0.65rem;opacity:0.5;">Built different, Build different.</span>
+</footer>
+
+</div><!-- /wrap -->
+
+<script>
+// Scroll reveal
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      // fire skill bars
+      e.target.querySelectorAll('.skill-fill').forEach(f => {
+        f.style.width = f.getAttribute('data-fill');
+      });
+      // fire tl items
+      e.target.querySelectorAll('.tl-item').forEach((t, i) => {
+        setTimeout(() => t.classList.add('in'), i * 60);
+      });
+      ro.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .act-card, .ldr-card, .stat-c, .strength-item').forEach(el => ro.observe(el));
+
+// Also trigger skill fills when sk-trigger enters
+const skObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-fill').forEach(f => {
+        f.style.width = f.getAttribute('data-fill');
+      });
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('#sk-trigger').forEach(s => skObs.observe(s));
+
+// Nav active state
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-item[href^="#"]');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navItems.forEach(n => n.classList.remove('active'));
+      const active = document.querySelector('.nav-item[href="#' + e.target.id + '"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => observer.observe(s));
+
+
+// Photo carousel
+const carousel = document.querySelector('.photo-carousel');
+if (carousel) {
+  const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+  const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+  const prev = carousel.querySelector('.carousel-btn.prev');
+  const next = carousel.querySelector('.carousel-btn.next');
+  let currentSlide = 0;
+  let carouselTimer;
+
+  const showSlide = (index) => {
+    currentSlide = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === currentSlide));
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+  };
+
+  const startCarousel = () => {
+    window.clearInterval(carouselTimer);
+    carouselTimer = window.setInterval(() => showSlide(currentSlide + 1), 5200);
+  };
+
+  const restartCarousel = () => {
+    startCarousel();
+  };
+
+  prev.addEventListener('click', () => {
+    showSlide(currentSlide - 1);
+    restartCarousel();
+  });
+  next.addEventListener('click', () => {
+    showSlide(currentSlide + 1);
+    restartCarousel();
+  });
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      showSlide(Number(dot.dataset.slide));
+      restartCarousel();
+    });
+  });
+  carousel.addEventListener('mouseenter', () => window.clearInterval(carouselTimer));
+  carousel.addEventListener('mouseleave', startCarousel);
+  carousel.addEventListener('focusin', () => window.clearInterval(carouselTimer));
+  carousel.addEventListener('focusout', startCarousel);
+  startCarousel();
+}
+
+</script>
+</body>
+</html>
