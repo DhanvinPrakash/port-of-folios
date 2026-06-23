@@ -284,58 +284,19 @@ nav {
 
 .idc-showcase { background: #f9f9f6; }
 .idc-showcase .app-text .bcard-label { color: var(--accent); }
-.idc-visual {
+.idc-photos {
   flex: 0 0 300px; min-height: 220px; border-radius: var(--radius);
-  background: #1a1a1a; position: relative; overflow: hidden;
-  box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+  overflow: hidden; position: relative;
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+  gap: 6px; background: #1a1a1a;
+  transition: transform 0.5s var(--transition); transform-style: preserve-3d;
 }
-.terrain-line {
-  position: absolute; left: 24px; right: 24px; bottom: 36px; height: 2px;
-  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.2) 0 16px, transparent 16px 24px);
+.app-showcase:hover .idc-photos { transform: rotateY(-5deg) rotateX(2deg) translateZ(20px); }
+.idc-photos img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.5s var(--transition), filter 0.3s ease;
 }
-.robot-body {
-  position: absolute; left: 50px; bottom: 64px;
-  width: 140px; height: 60px;
-  border: 2px solid rgba(255,255,255,0.3);
-  border-radius: 14px 14px 10px 10px;
-  background: rgba(255,255,255,0.05); backdrop-filter: blur(4px);
-}
-.robot-body::before {
-  content: '4WD';
-  position: absolute; top: 16px; left: 0; right: 0;
-  text-align: center; font-size: 0.8rem; font-weight: 700;
-  color: var(--accent); letter-spacing: 0.08em;
-}
-.wheel {
-  position: absolute; width: 34px; height: 34px; border-radius: 50%;
-  background: #333; border: 4px solid #555; bottom: -17px;
-}
-.wheel.w1 { left: 10px; } .wheel.w2 { right: 10px; }
-.wheel.w3 { left: 48px; opacity: 0.5; } .wheel.w4 { right: 48px; opacity: 0.5; }
-.claw-arm {
-  position: absolute; left: 170px; bottom: 96px;
-  width: 90px; height: 8px; border-radius: 99px;
-  background: var(--accent); transform-origin: left center;
-  animation: armMove 4s ease-in-out infinite;
-}
-@keyframes armMove {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-10deg); }
-}
-.claw-arm::before {
-  content: ''; position: absolute; right: -24px; top: -8px;
-  width: 36px; height: 24px; border: 3px solid var(--accent);
-  border-left: 0; border-radius: 0 14px 14px 0;
-}
-.reach-zone {
-  position: absolute; right: 24px; bottom: 64px;
-  width: 36px; height: 54px;
-  border: 1px dashed rgba(255,92,51,0.6); border-radius: 10px;
-}
-.reach-zone::after {
-  content: 'reach'; position: absolute; top: -22px; left: -2px;
-  font-size: 0.7rem; color: var(--accent); font-weight: 600;
-}
+.idc-photos img:hover { transform: scale(1.06); }
 
 /* TIMELINE */
 .tl { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 28px; }
@@ -536,6 +497,7 @@ nav {
   .stats-row { grid-template-columns: 1fr 1fr; }
   .app-showcase { flex-direction: column; padding: 24px; }
   .app-phones { width: 100%; justify-content: center; }
+  .idc-photos { width: 100%; flex: none; }
   nav .nav-item:nth-child(n+4) { display: none; }
   .carousel-slide img { height: 300px; }
   .carousel-caption h3 { font-size: 1.3rem; }
@@ -765,14 +727,11 @@ nav {
       <p>A 4WD rescue robot with a PID-controlled extending arm driven by two 13 kg·cm force servo motors. Designed for real disaster scenarios where the robot body cannot safely enter a space. The arm tracks its position with a PID loop for precise, stable extension under load.</p>
       <span class="app-badge" style="background: var(--accent);">Real-world scenario thinking</span>
     </div>
-    <div class="idc-visual">
-      <div class="terrain-line"></div>
-      <div class="reach-zone"></div>
-      <div class="robot-body">
-        <div class="wheel w1"></div><div class="wheel w2"></div>
-        <div class="wheel w3"></div><div class="wheel w4"></div>
-      </div>
-      <div class="claw-arm"></div>
+    <div class="idc-photos">
+      <img src="assets/robot%20image%201.jpeg" alt="Rescue robot full build">
+      <img src="assets/robot%20image%202.jpeg" alt="Rescue robot arm detail">
+      <img src="assets/robot%20image%203.jpeg" alt="Rescue robot in action">
+      <img src="assets/robot%20image%204.jpeg" alt="Rescue robot final assembly">
     </div>
   </div>
 
@@ -889,7 +848,7 @@ nav {
           data-body="Coffeenapp is an iOS drowsiness and study tool that uses CoreML sleep detection to monitor whether a student is falling asleep in real time. The home screen gives a quick overview of session status, current alertness score, and today's focus stats. Built as a single-file SwiftUI app with strict additive-only build constraints."
           data-tags="SwiftUI,CoreML,Sleep Detection,Single-file Architecture"
           data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
-          <img src="assets/coffeenapp homescreen.jpeg" alt="Coffeenapp home screen">
+          <img src="assets/coffeenapp%20homescreen.jpeg" alt="Coffeenapp home screen">
           <div class="carousel-caption">
             <div class="carousel-caption-label">iOS App · CoreML</div>
             <h3>Coffeenapp</h3>
@@ -904,7 +863,7 @@ nav {
           data-body="The Pomodoro screen in Coffeenapp runs a focus timer alongside a gamified XP and levelling system to reward sustained study sessions. The longer you stay alert and on task, the more XP you earn. This creates a feedback loop between the CoreML drowsiness detector and the productivity layer — if you fall asleep, the timer pauses and XP stops accumulating."
           data-tags="SwiftUI,Pomodoro Timer,Gamification,XP System,CoreML Integration"
           data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
-          <img src="assets/coffeenapp pomodoro.jpeg" alt="Coffeenapp Pomodoro timer">
+          <img src="assets/coffeenapp%20pomodoro.jpeg" alt="Coffeenapp Pomodoro timer">
           <div class="carousel-caption">
             <div class="carousel-caption-label">iOS App · Focus Tools</div>
             <h3>Coffeenapp · Pomodoro &amp; XP</h3>
@@ -919,7 +878,7 @@ nav {
           data-body="The sleep prevention screen is the core of Coffeenapp. A custom CoreML model trained on facial landmark data runs on-device to detect eye closure, head drooping, and microsleep events. When drowsiness is detected, the app triggers alerts — sound, haptics, and a full-screen warning — before the user loses focus. Entirely on-device with no network calls, ensuring privacy."
           data-tags="CoreML,Vision Framework,On-device ML,Facial Landmarks,Privacy-first"
           data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
-          <img src="assets/coffeenap sleep preventor.jpeg" alt="Coffeenapp drowsiness detection">
+          <img src="assets/coffeenap%20sleep%20preventor.jpeg" alt="Coffeenapp drowsiness detection">
           <div class="carousel-caption">
             <div class="carousel-caption-label">iOS App · CoreML Vision</div>
             <h3>Coffeenapp · Sleep Detection</h3>
@@ -934,7 +893,7 @@ nav {
           data-body="FridgeSaver is an iOS app that tracks what's in your fridge, monitors expiry dates, and reduces household food waste. The home screen shows all current pantry items sorted by days-until-expiry, with colour-coded urgency indicators. Built in SwiftUI with persistent local storage via CoreData."
           data-tags="SwiftUI,CoreData,Food Waste,Sustainability,iOS"
           data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
-          <img src="assets/fridgesaver home.jpeg" alt="FridgeSaver home screen">
+          <img src="assets/fridgesaver%20home.jpeg" alt="FridgeSaver home screen">
           <div class="carousel-caption">
             <div class="carousel-caption-label">iOS App · Sustainability</div>
             <h3>FridgeSaver · Pantry Tracker</h3>
@@ -949,7 +908,7 @@ nav {
           data-body="The FridgeSaver barcode scanner uses AVFoundation to read product barcodes and auto-populate item names, categories, and typical shelf-life data. Items are added to the pantry in a single scan, removing the friction of manual entry. The scanner runs entirely on-device with no API calls needed for recognised items."
           data-tags="AVFoundation,Barcode Scanning,SwiftUI,On-device,Fast UX"
           data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
-          <img src="assets/fridgesaver scanner.jpeg" alt="FridgeSaver barcode scanner">
+          <img src="assets/fridgesaver%20scanner.jpeg" alt="FridgeSaver barcode scanner">
           <div class="carousel-caption">
             <div class="carousel-caption-label">iOS App · Computer Vision</div>
             <h3>FridgeSaver · Barcode Scanner</h3>
@@ -964,7 +923,7 @@ nav {
           data-body="FridgeSaver's recipe screen uses the ingredients currently in your fridge to suggest meals you can cook right now — prioritising items closest to expiry so they get used first. Suggestions are generated intelligently based on available ingredients, dietary filters, and prep time. This turns an expiry tracker into an active meal planning tool."
           data-tags="SwiftUI,Recipe Generation,Ingredient Matching,Meal Planning,AI Features"
           data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
-          <img src="assets/fridgesaver recips.jpeg" alt="FridgeSaver recipes">
+          <img src="assets/fridgesaver%20recips.jpeg" alt="FridgeSaver recipes">
           <div class="carousel-caption">
             <div class="carousel-caption-label">iOS App · AI Features</div>
             <h3>FridgeSaver · Smart Recipes</h3>
@@ -979,7 +938,7 @@ nav {
           data-body="The IDC rescue robot is a custom-built 4WD platform designed for disaster response scenarios. Four motors drive the chassis in a differential configuration for high traction on uneven terrain. The extending arm is powered by two 13 kg·cm servo motors with a PID feedback loop to control position precisely without oscillation under load. The entire chassis, arm mounting, and wheel assembly was fabricated by the team."
           data-tags="4WD,Differential Drive,PID Control,13kg Servo Motors,Embedded Systems,Arduino,IDC"
           data-links='[{"label":"IDC Programme","url":"https://www.sst.edu.sg/student-life/idc/","primary":true}]'>
-          <img src="assets/robot image 1.jpeg" alt="Rescue robot full build">
+          <img src="assets/robot%20image%201.jpeg" alt="Rescue robot full build">
           <div class="carousel-caption">
             <div class="carousel-caption-label">Hardware · IDC Robot</div>
             <h3>Rescue Robot · Full Build</h3>
@@ -994,7 +953,7 @@ nav {
           data-body="The arm mechanism is the core engineering challenge of the robot. Two 13 kg·cm servo motors provide the torque to extend the arm and manipulate objects at a distance. A PID controller reads position feedback and adjusts motor output to reach the target position accurately without hunting or overshoot — critical when the robot needs to grip or push objects in tight spaces."
           data-tags="PID Control,Servo Motors,13kg Torque,Arm Mechanism,Position Feedback,Embedded C++"
           data-links='[{"label":"IDC Programme","url":"https://www.sst.edu.sg/student-life/idc/","primary":true}]'>
-          <img src="assets/robot image 2.jpeg" alt="Rescue robot arm detail">
+          <img src="assets/robot%20image%202.jpeg" alt="Rescue robot arm detail">
           <div class="carousel-caption">
             <div class="carousel-caption-label">Hardware · Arm Mechanism</div>
             <h3>Rescue Robot · PID Arm</h3>
@@ -1009,7 +968,7 @@ nav {
           data-body="Field testing validated the robot's ability to navigate rough terrain, avoid obstacles, and deploy the extending arm to reach into spaces the main body cannot enter. The 4WD drivetrain provided enough traction to climb over debris during simulated rescue scenarios. PID tuning was refined during testing to eliminate overshoot on arm positioning."
           data-tags="Field Testing,Terrain Navigation,PID Tuning,Obstacle Avoidance,IDC"
           data-links='[{"label":"IDC Programme","url":"https://www.sst.edu.sg/student-life/idc/","primary":true}]'>
-          <img src="assets/robot image 3.jpeg" alt="Rescue robot in action">
+          <img src="assets/robot%20image%203.jpeg" alt="Rescue robot in action">
           <div class="carousel-caption">
             <div class="carousel-caption-label">Hardware · Field Testing</div>
             <h3>Rescue Robot · Field Testing</h3>
@@ -1024,7 +983,7 @@ nav {
           data-body="The final assembly integrates the 4WD chassis, the PID arm system, onboard microcontroller, motor drivers, and power management into a single deployable unit. The robot was presented at the SST Integrated Design Challenge showcase and evaluated by industry judges on mechanical design, embedded systems implementation, and real-world applicability."
           data-tags="System Integration,Motor Drivers,Power Management,IDC Showcase,Embedded Systems"
           data-links='[{"label":"IDC Programme","url":"https://www.sst.edu.sg/student-life/idc/","primary":true}]'>
-          <img src="assets/robot image 4.jpeg" alt="Rescue robot final assembly">
+          <img src="assets/robot%20image%204.jpeg" alt="Rescue robot final assembly">
           <div class="carousel-caption">
             <div class="carousel-caption-label">Hardware · Final Assembly</div>
             <h3>Rescue Robot · Final Config</h3>
@@ -1039,7 +998,7 @@ nav {
           data-body="A custom PCB designed and fabricated as part of electronics coursework and side projects. The board was designed in EasyEDA, manufactured externally, and hand-soldered. Building custom PCBs removes the mess of breadboard wiring and allows for compact, reliable circuit layouts suitable for embedding in final hardware builds."
           data-tags="PCB Design,EasyEDA,Hand Soldering,Electronics,Hardware"
           data-links='[{"label":"My Portfolio","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
-          <img src="assets/diy pcb.jpeg" alt="DIY PCB">
+          <img src="assets/diy%20pcb.jpeg" alt="DIY PCB">
           <div class="carousel-caption">
             <div class="carousel-caption-label">Electronics · PCB Design</div>
             <h3>DIY PCB · Custom Board</h3>
@@ -1054,7 +1013,7 @@ nav {
           data-body="Diagnosed and repaired a malfunctioning FDM 3D printer, replacing a clogged hotend assembly, recalibrating the bed levelling, and flashing updated Marlin firmware to fix motion artefacts. Hands-on hardware repair like this builds the diagnostic instincts needed for embedded systems work — figuring out whether a problem is mechanical, electrical, or firmware-level."
           data-tags="3D Printing,FDM,Marlin Firmware,Hardware Repair,Diagnostics,Hotend"
           data-links='[{"label":"My Portfolio","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
-          <img src="assets/3d printer repair .jpeg" alt="3D printer repair">
+          <img src="assets/3d%20printer%20repair%20.jpeg" alt="3D printer repair">
           <div class="carousel-caption">
             <div class="carousel-caption-label">Hardware · Repair</div>
             <h3>3D Printer Repair</h3>
@@ -1069,7 +1028,7 @@ nav {
           data-body="A behind-the-scenes look at the collaboration with KKH Women's and Children's Hospital for the IDP capstone project. The team worked directly with neonatology staff to understand the clinical workflow, validated app features against the SNRC 2021 guidelines, and iterated on UI design to ensure usability under the stress of a real neonatal emergency."
           data-tags="KKH Hospital,SNRC 2021,Clinical Validation,Neonatology,IDP Capstone,SwiftUI"
           data-links='[{"label":"KKH Hospital","url":"https://www.kkh.com.sg","primary":true},{"label":"SST IDP","url":"https://www.sst.edu.sg","primary":false}]'>
-          <img src="assets/kkh photo tuff.jpeg" alt="KKH hospital collaboration">
+          <img src="assets/kkh%20photo%20tuff.jpeg" alt="KKH hospital collaboration">
           <div class="carousel-caption">
             <div class="carousel-caption-label">IDP Capstone · KKH</div>
             <h3>Neonatal Resuscitation · Collaboration</h3>
