@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prakash Dhanvin Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -111,11 +111,11 @@ nav {
   line-height: 0.95; letter-spacing: -0.04em; color: var(--text); margin-bottom: 12px;
 }
 .hero-name em {
-  font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+  font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-style: normal;
   color: var(--accent); -webkit-text-fill-color: var(--accent);
 }
 .hero-tagline {
-  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.5rem; color: var(--muted); margin-bottom: 28px; line-height: 1.4;
 }
 .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 560px; line-height: 1.7; margin-bottom: 32px; }
@@ -147,7 +147,7 @@ nav {
 .hero-right { display: flex; flex-direction: column; gap: 16px; perspective: 1000px; }
 .phones-widget {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 24px; overflow: hidden; position: relative;
+  border-radius: var(--radius); padding: 24px 24px 24px 24px; padding-top: 48px; overflow: visible; position: relative;
   display: flex; gap: 16px; align-items: flex-end; min-height: 380px;
   transform: rotateY(-5deg) rotateX(3deg);
   transition: transform 0.6s var(--transition);
@@ -161,8 +161,8 @@ nav {
   transition: transform 0.4s var(--transition);
 }
 .phone-frame img { width: 100%; display: block; vertical-align: bottom; }
-.phone-frame.tall { transform: translateY(-32px); }
-.phones-widget:hover .phone-frame.tall { transform: translateY(-40px); }
+.phone-frame.tall { transform: translateY(-16px); }
+.phones-widget:hover .phone-frame.tall { transform: translateY(-24px); }
 
 .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 40px; }
 .stat-c {
@@ -171,7 +171,7 @@ nav {
   text-align: left; transition: all 0.3s var(--transition);
 }
 .stat-c:hover { border-color: var(--text); transform: translateY(-4px); }
-.stat-n { font-family: 'Instrument Serif', serif; font-size: 3rem; color: var(--text); line-height: 1; margin-bottom: 8px; }
+.stat-n { font-family: 'Space Grotesk', sans-serif; font-size: 3rem; color: var(--text); line-height: 1; margin-bottom: 8px; }
 .stat-n.accent { color: var(--accent); }
 .stat-l { font-size: 0.75rem; color: var(--muted); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
 
@@ -187,12 +187,12 @@ nav {
 }
 .bcard:hover { border-color: var(--border2); box-shadow: var(--shadow-hover); transform: translateY(-4px); }
 .bcard-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-.bcard h2 { font-family: 'Instrument Serif', serif; font-size: 2rem; line-height: 1.1; color: var(--text); margin-bottom: 12px; font-weight: 400; }
+.bcard h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; line-height: 1.1; color: var(--text); margin-bottom: 12px; font-weight: 400; }
 .bcard h3 { font-size: 1.2rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
 .bcard p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
 
 .about-quote {
-  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.6rem; line-height: 1.5; color: var(--text);
   border-left: 4px solid var(--accent); padding-left: 24px; margin-bottom: 24px;
 }
@@ -204,7 +204,7 @@ nav {
   color: var(--text); transition: all 0.3s var(--transition); background: var(--surface);
 }
 .strength-item:hover { border-color: var(--accent); padding-left: 24px; background: #fff; }
-.str-num { font-family: 'Instrument Serif', serif; font-size: 1.2rem; color: var(--muted); font-weight: 400; flex-shrink: 0; }
+.str-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; color: var(--muted); font-weight: 400; flex-shrink: 0; }
 
 .bcard.dark { background: #1a1a1a; color: #f4f4f0; border-color: #1a1a1a; }
 .bcard.dark .bcard-label { color: rgba(255,255,255,0.4); }
@@ -238,7 +238,7 @@ nav {
 .app-showcase:hover { box-shadow: var(--shadow-hover); }
 .app-text { flex: 1; min-width: 0; z-index: 2; }
 .app-text .bcard-label { color: var(--accent); margin-bottom: 16px; }
-.app-text h3 { font-size: 2rem; font-weight: 400; font-family: 'Instrument Serif', serif; color: var(--text); margin-bottom: 12px; line-height: 1.1; }
+.app-text h3 { font-size: 2rem; font-weight: 400; font-family: 'Space Grotesk', sans-serif; color: var(--text); margin-bottom: 12px; line-height: 1.1; }
 .app-title-row { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
 .app-title-row h3 { margin-bottom: 0; }
 .app-icon-badge {
@@ -371,43 +371,18 @@ nav {
 .carousel-track-outer { overflow: hidden; width: 100%; }
 .carousel-track { display: flex; transition: transform 0.55s var(--transition); will-change: transform; }
 .carousel-slide {
-  min-width: 100%; position: relative; background: #111; cursor: pointer;
+  min-width: 100%; position: relative; background: #111;
 }
 .carousel-slide img {
   width: 100%; height: 500px; object-fit: cover; display: block; opacity: 0.92;
   transition: opacity 0.3s ease;
 }
 .carousel-slide:hover img { opacity: 1; }
-.carousel-caption {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 64px 40px 28px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
-  transition: padding-bottom 0.3s ease;
+.carousel-icon-badge {
+  position: absolute; top: 20px; left: 20px; z-index: 3;
+  width: 42px; height: 42px; border-radius: 11px; object-fit: cover;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.3);
 }
-.carousel-caption-label {
-  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
-}
-.carousel-caption h3 {
-  font-family: 'Instrument Serif', serif; font-size: 1.8rem;
-  font-weight: 400; color: #fff; line-height: 1.15; margin-bottom: 6px;
-}
-.cc-title-row { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
-.cc-title-row h3 { margin-bottom: 0; }
-.cc-app-icon {
-  width: 38px; height: 38px; border-radius: 10px; object-fit: cover;
-  flex-shrink: 0; box-shadow: 0 4px 14px rgba(0,0,0,0.4);
-  border: 1px solid rgba(255,255,255,0.25);
-}
-.carousel-caption-sub {
-  font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.55;
-  max-width: 600px; margin-bottom: 14px;
-}
-.carousel-tap-hint {
-  font-size: 0.75rem; color: rgba(255,255,255,0.4); display: flex;
-  align-items: center; gap: 6px; font-weight: 500;
-}
-.carousel-tap-hint svg { width: 13px; height: 13px; opacity: 0.5; }
 
 .carousel-controls {
   display: flex; align-items: center; justify-content: space-between;
@@ -454,7 +429,7 @@ nav {
 }
 .drawer-inner { padding: 24px 36px 48px; }
 .drawer-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-.drawer-title { font-family: 'Instrument Serif', serif; font-size: 2rem; font-weight: 400; color: var(--text); line-height: 1.15; margin-bottom: 16px; }
+.drawer-title { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 400; color: var(--text); line-height: 1.15; margin-bottom: 16px; }
 .drawer-body { font-size: 0.97rem; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
 .drawer-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
 .drawer-tag {
@@ -497,11 +472,11 @@ nav {
 }
 .contact-eyebrow { font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; position: relative; z-index: 2; }
 .contact-name {
-  font-family: 'Instrument Serif', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 400; letter-spacing: -0.02em;
   color: #ffffff; line-height: 1.05; margin-bottom: 16px; position: relative; z-index: 2;
 }
-.contact-name em { font-style: italic; color: var(--accent); -webkit-text-fill-color: var(--accent); }
+.contact-name em { font-style: normal; font-weight: 500; color: var(--accent); -webkit-text-fill-color: var(--accent); }
 .contact-sub { font-size: 1rem; color: rgba(255,255,255,0.6); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; position: relative; z-index: 2; }
 .contact-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
 
@@ -515,7 +490,6 @@ nav {
   .idc-photos { width: 100%; flex: none; }
   nav .nav-item:nth-child(n+4) { display: none; }
   .carousel-slide img { height: 300px; }
-  .carousel-caption h3 { font-size: 1.3rem; }
   .drawer-inner { padding: 20px 20px 40px; }
   .drawer-title { font-size: 1.5rem; }
 }
@@ -598,7 +572,7 @@ nav {
 <!-- ABOUT -->
 <section id="about" style="padding-top: 80px;">
   <div class="sec-label">About</div>
-  <h2 style="font-family: 'Instrument Serif', serif; font-size: 3rem; font-weight: 400; margin-bottom: 24px;">What makes "me"?</h2>
+  <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 400; margin-bottom: 24px;">What makes "me"?</h2>
 
   <div class="bento-row bento-32 reveal">
     <div class="bcard">
@@ -630,16 +604,16 @@ nav {
     <div class="bcard">
       <div class="bcard-label">Core Strengths</div>
       <div class="strengths">
-        <div class="strength-item"><span class="str-num">01</span>Strategic — I create alternative ways to proceed.</div>
-        <div class="strength-item"><span class="str-num">02</span>Achiever — I work hard and possess a great deal of stamina.</div>
-        <div class="strength-item"><span class="str-num">03</span>Analytical — I search for reasons and causes.</div>
+        <div class="strength-item"><span class="str-num">01</span>Strategic: I create alternative ways to proceed.</div>
+        <div class="strength-item"><span class="str-num">02</span>Achiever: I work hard and possess a great deal of stamina.</div>
+        <div class="strength-item"><span class="str-num">03</span>Analytical: I search for reasons and causes.</div>
       </div>
     </div>
     <div class="bcard">
       <div class="bcard-label">Leadership</div>
       <div class="strengths">
-        <div class="strength-item"><span class="str-num">04</span>Command — I can take control of a situation and make decisions.</div>
-        <div class="strength-item"><span class="str-num">05</span>Competition — I measure my progress against others' performance.</div>
+        <div class="strength-item"><span class="str-num">04</span>Command: I can take control of a situation and make decisions.</div>
+        <div class="strength-item"><span class="str-num">05</span>Competition: I measure my progress against others' performance.</div>
       </div>
     </div>
   </div>
@@ -648,7 +622,7 @@ nav {
 <!-- SKILLS -->
 <section id="skills" style="padding-top: 80px;">
   <div class="sec-label">Skills</div>
-  <h2 style="font-family: 'Instrument Serif', serif; font-size: 3rem; font-weight: 400; margin-bottom: 24px;">Tools of the trade</h2>
+  <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 400; margin-bottom: 24px;">Tools of the trade</h2>
 
   <div class="bento-row bento-2 reveal">
     <div class="bcard">
@@ -675,7 +649,7 @@ nav {
 <!-- WORK -->
 <section id="work" style="padding-top: 80px;">
   <div class="sec-label">Experience</div>
-  <h2 style="font-family: 'Instrument Serif', serif; font-size: 3rem; font-weight: 400; margin-bottom: 24px;">Apps &amp; Engineering</h2>
+  <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 400; margin-bottom: 24px;">Apps &amp; Engineering</h2>
 
   <!-- moveAbility -->
   <div class="app-showcase reveal" style="margin-bottom: 24px;"
@@ -713,7 +687,7 @@ nav {
       <div class="bcard-label">★ KKH Hospital Collaboration</div>
       <div class="app-title-row">
         <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/kkh%20icon.jpeg?raw=true" alt="KKH Neonatal app icon" class="app-icon-badge">
-        <h3>Neonatal Resuscitation <span style="font-style:italic; color:var(--green)">Saving Tiny Lives</span></h3>
+        <h3>Neonatal Resuscitation <span style="font-weight:600; color:var(--green)">Saving Tiny Lives</span></h3>
       </div>
       <p>Built in direct collaboration with KKH, this iOS app is an evidence-based clinical decision support tool for neonatal resuscitation following the SNRC 2021 Guidelines. It calculates weight-based drug dosages, equipment sizes, and APGAR scores in real time.</p>
       <span class="app-badge" style="background: var(--green);">IDP Capstone · In Progress</span>
@@ -734,16 +708,16 @@ nav {
   <!-- IDC Robot -->
   <div class="app-showcase reveal idc-showcase"
     data-drawer="true"
-    data-label="Integrated Design Challenge · Hardware"
-    data-title="Rescue Robot · 4WD with PID Arm"
-    data-body="Designed for real disaster rescue scenarios, this 4-wheel-drive robot features a PID-controlled extending arm driven by two 13 kg·cm force servo motors — enough torque to push through rubble and manipulate objects at a distance. The drivetrain uses four motors in a differential configuration for high grip and tight turning on uneven terrain. PID tracking on the arm ensures precise, repeatable extension without oscillation even under load. The entire mechanical structure was designed, fabricated, and assembled by the team from scratch."
-    data-tags="4WD Drivetrain,PID Control,13kg Servo Motors,Extending Arm,Embedded Systems,Arduino,IDC"
+    data-label="Integrated Design Challenge · Graded Project"
+    data-title="Rescue Robot · 4WD with Extending PID Arm"
+    data-body="Built as a graded engineering assessment, this robot was one of the only entries in the cohort with a 4 wheel drive chassis. Most other teams built 2WD platforms and didn't attempt an extending arm at all. The arm physically telescopes outward, driven by two 13 kg·cm servo motors with a PID feedback loop, giving it reach that no other team's robot had. Four motors in a differential configuration give the chassis grip and tight turning on uneven terrain, while the PID loop keeps the arm's extension precise and stable under load, with no oscillation. The entire mechanical structure, including the extending arm, was designed, fabricated, and assembled by the team from scratch."
+    data-tags="4WD Drivetrain,PID Control,13kg Servo Motors,Telescoping Arm,Embedded Systems,Arduino,Graded Project"
     data-links='[{"label":"IDC Overview","url":"https://www.sst.edu.sg/student-life/idc/","primary":true}]'>
     <div class="app-text">
-      <div class="bcard-label">Integrated Design Challenge</div>
-      <h3>Rescue Robot · 4WD with PID Arm</h3>
-      <p>A 4WD rescue robot with a PID-controlled extending arm driven by two 13 kg·cm force servo motors. Designed for real disaster scenarios where the robot body cannot safely enter a space. The arm tracks its position with a PID loop for precise, stable extension under load.</p>
-      <span class="app-badge" style="background: var(--accent);">Real-world scenario thinking</span>
+      <div class="bcard-label">Integrated Design Challenge · Graded Project</div>
+      <h3>Rescue Robot · 4WD with Extending PID Arm</h3>
+      <p>One of the only 4WD entries in the cohort, most other teams built 2WD chassis and skipped an extending arm entirely. This arm physically telescopes outward on two 13 kg·cm servo motors, with a PID loop keeping the extension precise and stable under load, giving the robot reach no other team's build had.</p>
+      <span class="app-badge" style="background: var(--accent);">Only 4WD + extending arm in the cohort</span>
     </div>
     <div class="idc-photos">
       <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/robot%20image%201.jpeg?raw=true" alt="Rescue robot full build">
@@ -853,212 +827,65 @@ nav {
 <!-- IMAGE CAROUSEL -->
 <section class="carousel-section reveal" id="gallery">
   <div class="sec-label">Gallery</div>
-  <h2 style="font-family: 'Instrument Serif', serif; font-size: 3rem; font-weight: 400; margin-bottom: 8px;">Built with my hands.</h2>
-  <p style="color: var(--muted); font-size: 1rem; margin-bottom: 32px;">Hardware, code, and everything in between. Click any image to learn more.</p>
+  <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 400; margin-bottom: 8px;">Built with my hands.</h2>
+  <p style="color: var(--muted); font-size: 1rem; margin-bottom: 32px;">Hardware, code, and everything in between.</p>
 
   <div class="carousel-wrap">
     <div class="carousel-track-outer">
       <div class="carousel-track" id="carouselTrack">
 
-        <div class="carousel-slide"
-          data-label="iOS App · CoreML"
-          data-title="Coffeenapp · Home Screen"
-          data-body="Coffeenapp is an iOS drowsiness and study tool that uses CoreML sleep detection to monitor whether a student is falling asleep in real time. The home screen gives a quick overview of session status, current alertness score, and today's focus stats. Built as a single-file SwiftUI app with strict additive-only build constraints."
-          data-tags="SwiftUI,CoreML,Sleep Detection,Single-file Architecture"
-          data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
+        <div class="carousel-slide">
+          <img class="carousel-icon-badge" src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/bettericon.png?raw=true" alt="Coffeenapp icon">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/coffeenapp%20homescreen.jpeg?raw=true" alt="Coffeenapp home screen">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">iOS App · CoreML</div>
-            <div class="cc-title-row">
-              <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/bettericon.png?raw=true" alt="Coffeenapp icon" class="cc-app-icon">
-              <h3>Coffeenapp</h3>
-            </div>
-            <p class="carousel-caption-sub">Real-time drowsiness detection meets Pomodoro productivity. Tap to learn how it works.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
-        <div class="carousel-slide"
-          data-label="iOS App · Focus Tools"
-          data-title="Coffeenapp · Pomodoro and XP System"
-          data-body="The Pomodoro screen in Coffeenapp runs a focus timer alongside a gamified XP and levelling system to reward sustained study sessions. The longer you stay alert and on task, the more XP you earn. This creates a feedback loop between the CoreML drowsiness detector and the productivity layer — if you fall asleep, the timer pauses and XP stops accumulating."
-          data-tags="SwiftUI,Pomodoro Timer,Gamification,XP System,CoreML Integration"
-          data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
+        <div class="carousel-slide">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/coffeenapp%20pomodoro.jpeg?raw=true" alt="Coffeenapp Pomodoro timer">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">iOS App · Focus Tools</div>
-            <h3>Coffeenapp · Pomodoro &amp; XP</h3>
-            <p class="carousel-caption-sub">Gamified focus timer that integrates directly with the sleep detector.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
-        <div class="carousel-slide"
-          data-label="iOS App · CoreML Vision"
-          data-title="Coffeenapp · Sleep Detection Engine"
-          data-body="The sleep prevention screen is the core of Coffeenapp. A custom CoreML model trained on facial landmark data runs on-device to detect eye closure, head drooping, and microsleep events. When drowsiness is detected, the app triggers alerts — sound, haptics, and a full-screen warning — before the user loses focus. Entirely on-device with no network calls, ensuring privacy."
-          data-tags="CoreML,Vision Framework,On-device ML,Facial Landmarks,Privacy-first"
-          data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
+        <div class="carousel-slide">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/coffeenap%20sleep%20preventor.jpeg?raw=true" alt="Coffeenapp drowsiness detection">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">iOS App · CoreML Vision</div>
-            <h3>Coffeenapp · Sleep Detection</h3>
-            <p class="carousel-caption-sub">On-device CoreML model detecting microsleep in real time. No network. Full privacy.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
-        <div class="carousel-slide"
-          data-label="iOS App · Sustainability"
-          data-title="FridgeSaver · Home Screen"
-          data-body="FridgeSaver is an iOS app that tracks what's in your fridge, monitors expiry dates, and reduces household food waste. The home screen shows all current pantry items sorted by days-until-expiry, with colour-coded urgency indicators. Built in SwiftUI with persistent local storage via CoreData."
-          data-tags="SwiftUI,CoreData,Food Waste,Sustainability,iOS"
-          data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
+        <div class="carousel-slide">
+          <img class="carousel-icon-badge" src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/Icon-iOS-Dark-1024x1024@1x.png?raw=true" alt="FridgeSaver icon">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/fridgesaver%20home.jpeg?raw=true" alt="FridgeSaver home screen">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">iOS App · Sustainability</div>
-            <div class="cc-title-row">
-              <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/Icon-iOS-Dark-1024x1024@1x.png?raw=true" alt="FridgeSaver icon" class="cc-app-icon">
-              <h3>FridgeSaver · Pantry Tracker</h3>
-            </div>
-            <p class="carousel-caption-sub">Tracks your pantry, monitors expiry, and cuts food waste. Tap to explore.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
-        <div class="carousel-slide"
-          data-label="iOS App · Computer Vision"
-          data-title="FridgeSaver · Barcode Scanner"
-          data-body="The FridgeSaver barcode scanner uses AVFoundation to read product barcodes and auto-populate item names, categories, and typical shelf-life data. Items are added to the pantry in a single scan, removing the friction of manual entry. The scanner runs entirely on-device with no API calls needed for recognised items."
-          data-tags="AVFoundation,Barcode Scanning,SwiftUI,On-device,Fast UX"
-          data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
+        <div class="carousel-slide">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/fridgesaver%20scanner.jpeg?raw=true" alt="FridgeSaver barcode scanner">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">iOS App · Computer Vision</div>
-            <h3>FridgeSaver · Barcode Scanner</h3>
-            <p class="carousel-caption-sub">AVFoundation-powered scanner that adds items in a single scan.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
-        <div class="carousel-slide"
-          data-label="iOS App · AI Features"
-          data-title="FridgeSaver · Recipe Suggestions"
-          data-body="FridgeSaver's recipe screen uses the ingredients currently in your fridge to suggest meals you can cook right now — prioritising items closest to expiry so they get used first. Suggestions are generated intelligently based on available ingredients, dietary filters, and prep time. This turns an expiry tracker into an active meal planning tool."
-          data-tags="SwiftUI,Recipe Generation,Ingredient Matching,Meal Planning,AI Features"
-          data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
+        <div class="carousel-slide">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/fridgesaver%20recips.jpeg?raw=true" alt="FridgeSaver recipes">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">iOS App · AI Features</div>
-            <h3>FridgeSaver · Smart Recipes</h3>
-            <p class="carousel-caption-sub">Suggests meals from what you have, using up the items expiring soonest.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
-        <div class="carousel-slide"
-          data-label="Hardware · IDC Robot"
-          data-title="Rescue Robot · Full Build"
-          data-body="The IDC rescue robot is a custom-built 4WD platform designed for disaster response scenarios. Four motors drive the chassis in a differential configuration for high traction on uneven terrain. The extending arm is powered by two 13 kg·cm servo motors with a PID feedback loop to control position precisely without oscillation under load. The entire chassis, arm mounting, and wheel assembly was fabricated by the team."
-          data-tags="4WD,Differential Drive,PID Control,13kg Servo Motors,Embedded Systems,Arduino,IDC"
-          data-links='[{"label":"IDC Programme","url":"https://www.sst.edu.sg/student-life/idc/","primary":true}]'>
+        <div class="carousel-slide">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/robot%20image%201.jpeg?raw=true" alt="Rescue robot full build">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">Hardware · IDC Robot</div>
-            <h3>Rescue Robot · Full Build</h3>
-            <p class="carousel-caption-sub">4WD chassis with PID-controlled extending arm and dual 13 kg·cm motors.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
-        <div class="carousel-slide"
-          data-label="Hardware · Arm Mechanism"
-          data-title="Rescue Robot · PID Extending Arm"
-          data-body="The arm mechanism is the core engineering challenge of the robot. Two 13 kg·cm servo motors provide the torque to extend the arm and manipulate objects at a distance. A PID controller reads position feedback and adjusts motor output to reach the target position accurately without hunting or overshoot — critical when the robot needs to grip or push objects in tight spaces."
-          data-tags="PID Control,Servo Motors,13kg Torque,Arm Mechanism,Position Feedback,Embedded C++"
-          data-links='[{"label":"IDC Programme","url":"https://www.sst.edu.sg/student-life/idc/","primary":true}]'>
+        <div class="carousel-slide">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/robot%20image%202.jpeg?raw=true" alt="Rescue robot arm detail">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">Hardware · Arm Mechanism</div>
-            <h3>Rescue Robot · PID Arm</h3>
-            <p class="carousel-caption-sub">Dual 13 kg·cm motors with PID feedback for precise, stable arm extension.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
-        <div class="carousel-slide"
-          data-label="Hardware · Field Testing"
-          data-title="Rescue Robot · In Action"
-          data-body="Field testing validated the robot's ability to navigate rough terrain, avoid obstacles, and deploy the extending arm to reach into spaces the main body cannot enter. The 4WD drivetrain provided enough traction to climb over debris during simulated rescue scenarios. PID tuning was refined during testing to eliminate overshoot on arm positioning."
-          data-tags="Field Testing,Terrain Navigation,PID Tuning,Obstacle Avoidance,IDC"
-          data-links='[{"label":"IDC Programme","url":"https://www.sst.edu.sg/student-life/idc/","primary":true}]'>
+        <div class="carousel-slide">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/robot%20image%203.jpeg?raw=true" alt="Rescue robot in action">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">Hardware · Field Testing</div>
-            <h3>Rescue Robot · Field Testing</h3>
-            <p class="carousel-caption-sub">Terrain validation and PID tuning in simulated rescue conditions.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
-        <div class="carousel-slide"
-          data-label="Hardware · Final Assembly"
-          data-title="Rescue Robot · Final Configuration"
-          data-body="The final assembly integrates the 4WD chassis, the PID arm system, onboard microcontroller, motor drivers, and power management into a single deployable unit. The robot was presented at the SST Integrated Design Challenge showcase and evaluated by industry judges on mechanical design, embedded systems implementation, and real-world applicability."
-          data-tags="System Integration,Motor Drivers,Power Management,IDC Showcase,Embedded Systems"
-          data-links='[{"label":"IDC Programme","url":"https://www.sst.edu.sg/student-life/idc/","primary":true}]'>
+        <div class="carousel-slide">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/robot%20image%204.jpeg?raw=true" alt="Rescue robot final assembly">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">Hardware · Final Assembly</div>
-            <h3>Rescue Robot · Final Config</h3>
-            <p class="carousel-caption-sub">Fully integrated system presented at the IDC showcase to industry judges.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
-        <div class="carousel-slide"
-          data-label="Electronics · PCB Design"
-          data-title="DIY PCB · Custom Board"
-          data-body="A custom PCB designed and fabricated as part of electronics coursework and side projects. The board was designed in EasyEDA, manufactured externally, and hand-soldered. Building custom PCBs removes the mess of breadboard wiring and allows for compact, reliable circuit layouts suitable for embedding in final hardware builds."
-          data-tags="PCB Design,EasyEDA,Hand Soldering,Electronics,Hardware"
-          data-links='[{"label":"My Portfolio","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
+        <div class="carousel-slide">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/diy%20pcb.jpeg?raw=true" alt="DIY PCB">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">Electronics · PCB Design</div>
-            <h3>DIY PCB · Custom Board</h3>
-            <p class="carousel-caption-sub">Designed in EasyEDA, fabricated and hand-soldered. Click for the full story.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
-        <div class="carousel-slide"
-          data-label="Hardware · Repair"
-          data-title="3D Printer Repair"
-          data-body="Diagnosed and repaired a malfunctioning FDM 3D printer, replacing a clogged hotend assembly, recalibrating the bed levelling, and flashing updated Marlin firmware to fix motion artefacts. Hands-on hardware repair like this builds the diagnostic instincts needed for embedded systems work — figuring out whether a problem is mechanical, electrical, or firmware-level."
-          data-tags="3D Printing,FDM,Marlin Firmware,Hardware Repair,Diagnostics,Hotend"
-          data-links='[{"label":"My Portfolio","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
+        <div class="carousel-slide">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/3d%20printer%20repair%20.jpeg?raw=true" alt="3D printer repair">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">Hardware · Repair</div>
-            <h3>3D Printer Repair</h3>
-            <p class="carousel-caption-sub">Hotend replacement, bed recalibration, and Marlin firmware flash.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
-        <div class="carousel-slide"
-          data-label="IDP Capstone · KKH"
-          data-title="Neonatal Resuscitation · Hospital Collaboration"
-          data-body="A behind-the-scenes look at the collaboration with KKH Women's and Children's Hospital for the IDP capstone project. The team worked directly with neonatology staff to understand the clinical workflow, validated app features against the SNRC 2021 guidelines, and iterated on UI design to ensure usability under the stress of a real neonatal emergency."
-          data-tags="KKH Hospital,SNRC 2021,Clinical Validation,Neonatology,IDP Capstone,SwiftUI"
-          data-links='[{"label":"KKH Hospital","url":"https://www.kkh.com.sg","primary":true},{"label":"SST IDP","url":"https://www.sst.edu.sg","primary":false}]'>
+        <div class="carousel-slide">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/kkh%20photo%20tuff.jpeg?raw=true" alt="KKH hospital collaboration">
-          <div class="carousel-caption">
-            <div class="carousel-caption-label">IDP Capstone · KKH</div>
-            <h3>Neonatal Resuscitation · Collaboration</h3>
-            <p class="carousel-caption-sub">Working directly with KKH neonatology staff to validate the app in a clinical context.</p>
-            <div class="carousel-tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg> Click for details</div>
-          </div>
         </div>
 
       </div>
@@ -1208,19 +1035,6 @@ document.querySelectorAll('.tl-item').forEach(item => {
 
   document.getElementById('carouselPrev').addEventListener('click', () => { goTo(current - 1); resetAuto(); });
   document.getElementById('carouselNext').addEventListener('click', () => { goTo(current + 1); resetAuto(); });
-
-  // Click slide to open drawer
-  slides.forEach(slide => {
-    slide.addEventListener('click', function() {
-      openDrawer({
-        label: this.dataset.label,
-        title: this.dataset.title,
-        body:  this.dataset.body,
-        tags:  this.dataset.tags,
-        links: this.dataset.links
-      });
-    });
-  });
 
   // Touch swipe
   let startX = 0;
