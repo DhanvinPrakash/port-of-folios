@@ -378,11 +378,6 @@ nav {
   transition: opacity 0.3s ease;
 }
 .carousel-slide:hover img { opacity: 1; }
-.carousel-icon-badge {
-  position: absolute; top: 20px; left: 20px; z-index: 3;
-  width: 42px; height: 42px; border-radius: 11px; object-fit: cover;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.3);
-}
 
 .carousel-controls {
   display: flex; align-items: center; justify-content: space-between;
@@ -675,6 +670,66 @@ nav {
     </div>
   </div>
 
+  <!-- Coffeenapp -->
+  <div class="app-showcase reveal" style="margin-bottom: 24px;"
+    data-drawer="true"
+    data-label="iOS App · CoreML"
+    data-title="Coffeenapp"
+    data-body="Coffeenapp is an iOS focus and drowsiness detection tool built around a custom on-device CoreML model. A facial landmark model running entirely on-device detects eye closure, head drooping, and microsleep events in real time, triggering sound, haptic, and full-screen alerts before the user loses focus. Wrapped around the detector is a Pomodoro style focus timer with a gamified XP and levelling system, staying alert and on task earns XP, while falling asleep pauses the timer and stops XP from accumulating. Built as a single-file SwiftUI app with strict additive-only build constraints, and with no network calls at all, keeping every camera frame private to the device."
+    data-tags="SwiftUI,CoreML,On-device ML,Facial Landmarks,Pomodoro Timer,Gamification,Privacy-first"
+    data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
+    <div class="app-text">
+      <div class="bcard-label">iOS App · CoreML</div>
+      <div class="app-title-row">
+        <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/bettericon.png?raw=true" alt="Coffeenapp icon" class="app-icon-badge">
+        <h3>Coffeenapp</h3>
+      </div>
+      <p>An iOS study tool that uses a custom on-device CoreML model to catch microsleep before it happens, wrapped in a gamified Pomodoro timer that rewards staying alert. Everything runs on-device, with no network calls.</p>
+      <span class="app-badge">On-device CoreML, zero network calls</span>
+    </div>
+    <div class="app-phones">
+      <div class="app-phone">
+        <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/coffeenapp%20homescreen.jpeg?raw=true" alt="Coffeenapp home screen">
+      </div>
+      <div class="app-phone tall">
+        <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/coffeenapp%20pomodoro.jpeg?raw=true" alt="Coffeenapp Pomodoro timer">
+      </div>
+      <div class="app-phone">
+        <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/coffeenap%20sleep%20preventor.jpeg?raw=true" alt="Coffeenapp drowsiness detection">
+      </div>
+    </div>
+  </div>
+
+  <!-- FridgeSaver -->
+  <div class="app-showcase reveal" style="margin-bottom: 24px;"
+    data-drawer="true"
+    data-label="iOS App · Sustainability"
+    data-title="FridgeSaver"
+    data-body="FridgeSaver is an iOS app that tracks what's in your fridge, monitors expiry dates, and helps cut household food waste. The home screen lists every pantry item sorted by days until expiry with colour-coded urgency indicators, backed by persistent local storage in CoreData. An AVFoundation barcode scanner reads product barcodes and auto-populates item names, categories, and typical shelf life in a single scan, removing the friction of manual entry entirely on-device. A recipe screen then suggests meals from the ingredients already in the fridge, prioritising whatever is closest to expiry so it gets used first, turning a simple expiry tracker into an active meal planning tool."
+    data-tags="SwiftUI,CoreData,AVFoundation,Barcode Scanning,Food Waste,Sustainability"
+    data-links='[{"label":"View Project","url":"https://dhanvin-prakash.netlify.app","primary":true}]'>
+    <div class="app-text">
+      <div class="bcard-label">iOS App · Sustainability</div>
+      <div class="app-title-row">
+        <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/Icon-iOS-Dark-1024x1024@1x.png?raw=true" alt="FridgeSaver icon" class="app-icon-badge">
+        <h3>FridgeSaver</h3>
+      </div>
+      <p>An iOS app that tracks your fridge, scans barcodes to add items in one shot, and suggests recipes built around whatever is closest to expiring, cutting food waste without extra effort.</p>
+      <span class="app-badge">Cuts household food waste</span>
+    </div>
+    <div class="app-phones">
+      <div class="app-phone">
+        <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/fridgesaver%20home.jpeg?raw=true" alt="FridgeSaver home screen">
+      </div>
+      <div class="app-phone tall">
+        <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/fridgesaver%20scanner.jpeg?raw=true" alt="FridgeSaver barcode scanner">
+      </div>
+      <div class="app-phone">
+        <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/fridgesaver%20recips.jpeg?raw=true" alt="FridgeSaver recipes">
+      </div>
+    </div>
+  </div>
+
   <!-- KKH -->
   <div class="app-showcase reveal kkh-showcase" style="margin-bottom: 24px;"
     data-drawer="true"
@@ -835,32 +890,6 @@ nav {
       <div class="carousel-track" id="carouselTrack">
 
         <div class="carousel-slide">
-          <img class="carousel-icon-badge" src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/bettericon.png?raw=true" alt="Coffeenapp icon">
-          <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/coffeenapp%20homescreen.jpeg?raw=true" alt="Coffeenapp home screen">
-        </div>
-
-        <div class="carousel-slide">
-          <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/coffeenapp%20pomodoro.jpeg?raw=true" alt="Coffeenapp Pomodoro timer">
-        </div>
-
-        <div class="carousel-slide">
-          <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/coffeenap%20sleep%20preventor.jpeg?raw=true" alt="Coffeenapp drowsiness detection">
-        </div>
-
-        <div class="carousel-slide">
-          <img class="carousel-icon-badge" src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/Icon-iOS-Dark-1024x1024@1x.png?raw=true" alt="FridgeSaver icon">
-          <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/fridgesaver%20home.jpeg?raw=true" alt="FridgeSaver home screen">
-        </div>
-
-        <div class="carousel-slide">
-          <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/fridgesaver%20scanner.jpeg?raw=true" alt="FridgeSaver barcode scanner">
-        </div>
-
-        <div class="carousel-slide">
-          <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/fridgesaver%20recips.jpeg?raw=true" alt="FridgeSaver recipes">
-        </div>
-
-        <div class="carousel-slide">
           <img src="https://github.com/DhanvinPrakash/port-of-folios/blob/main/portfolio-github-ready/assets/robot%20image%201.jpeg?raw=true" alt="Rescue robot full build">
         </div>
 
@@ -897,7 +926,7 @@ nav {
         <button class="carousel-btn" id="carouselNext" aria-label="Next">&#8594;</button>
       </div>
       <div class="carousel-dots" id="carouselDots"></div>
-      <div class="carousel-counter" id="carouselCounter">1 / 13</div>
+      <div class="carousel-counter" id="carouselCounter">1 / 7</div>
     </div>
   </div>
 </section>
